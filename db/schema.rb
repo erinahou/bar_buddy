@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_17_052324) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_20_094832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,13 +60,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_052324) do
 
   create_table "preselected_bars", force: :cascade do |t|
     t.bigint "bar_id", null: false
-    t.bigint "user_id", null: false
     t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bar_id"], name: "index_preselected_bars_on_bar_id"
     t.index ["group_id"], name: "index_preselected_bars_on_group_id"
-    t.index ["user_id"], name: "index_preselected_bars_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,11 +83,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_052324) do
 
   create_table "votes", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "bar_id", null: false
     t.boolean "vote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bar_id"], name: "index_votes_on_bar_id"
+    t.bigint "preselected_bar_id", null: false
+    t.index ["preselected_bar_id"], name: "index_votes_on_preselected_bar_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
@@ -100,7 +98,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_17_052324) do
   add_foreign_key "members", "users"
   add_foreign_key "preselected_bars", "bars"
   add_foreign_key "preselected_bars", "groups"
-  add_foreign_key "preselected_bars", "users"
-  add_foreign_key "votes", "bars"
+  add_foreign_key "votes", "preselected_bars"
   add_foreign_key "votes", "users"
 end

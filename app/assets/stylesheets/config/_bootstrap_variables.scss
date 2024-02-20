@@ -12,15 +12,19 @@ $font-size-base:         1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
+$primary:    $bb-primary; // Changed this to bb's color
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
-$border-radius-lg: 2px;
-$border-radius-sm: 2px;
+$border-radius:    8px;
+$border-radius-sm: 8px;
+$border-radius-lg: 8px;
 
 // Override other variables below!
+$input-btn-padding-y: 16px; // Increase this for bb
+$input-btn-padding-x: 16px;
+$btn-border-radius-lg: $border-radius-lg;
+$link-color: $bb-primary;
