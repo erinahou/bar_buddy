@@ -1,0 +1,33 @@
+<%= form_with model: @group, url: groups_path, method: :post do |form| %>
+  <div>
+    <%= form.label :title, "What's the title of the group?" %>
+    <%= form.text_field :title, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :When_do_you_want_to_go_out? %>
+    <%= form.date_field :when_do_you_want_to_go_out, required: true %>
+
+    <%= form.label :time %>
+    <%= form.time_field :time, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :Which_area? %>
+    <%= form.text_field :which_area, required: true %>
+  </div>
+
+   <div>
+  <%= form.label :characteristics %>
+  <%= form.collection_select :characteristic_ids, @characteristics, :name, :name, { prompt: "Select Characteristics" }, multiple: true %>
+  </div>
+
+  <div>
+    <%= form.label :invite_friends %>
+    <%= form.text_field :invite_friends, placeholder: "Separate emails with commas" %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Group" %>
+  </div>
+<% end %>
