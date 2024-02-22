@@ -1,5 +1,5 @@
 class PreselectedBarsController < ApplicationController
   def index
-    @preselected_bars = Preselected_bars.all
+    @preselected_bars = PreselectedBar.all;
   end
 end
