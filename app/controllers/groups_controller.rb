@@ -1,24 +1,18 @@
 class GroupsController < ApplicationController
   def new
     @group = Group.new
-    @characteristics = ['pub', 'cocktail', 'wine bar', 'dive bar', 'with food', 'brewery', 'rooftop bar', 'kid friendly', 'dog friendly', 'speakeasy', 'distillery'].map do |name|
-      characteristic = Characteristic.find_by(name: name)
-
-      if characteristic.nil?
-        characteristic = Characteristic.create(name: name)
-      end
-
-      characteristic
-    end
+    @characteristics = Characteristic.all
   end
 
   def create
     @group = current_user.groups.build(group_params)
-    @characteristics = Characteristic.find(params[:group][:characteristic_ids].reject(&:empty?))
-
-    @group.characteristics = @characteristics
 
     if @group.save
+      Characteristic.find(params[:id])
+      selected_bars = Bar.joins(:bar_characteristics).where(bar_characteristics: {characteristic_id: params[:group][:characteristic_ids]})
+      selected_bars.each do |bar|
+        PreselectedBar.create(bar_id: bar.id, group_id: @group)
+      end
       redirect_to groups_path, notice: 'Group created successfully!'
     else
       render :new
@@ -47,7 +41,9 @@ class GroupsController < ApplicationController
   def add_member
   end
 
+  private
+
   def group_params
-    params.require(:group).permit(:title, :when_do_you_want_to_go_out, :which_area, :time, :invite_friends, characteristic_ids: [])
+    params.require(:group).permit(:title, :date_of_outing, :time_of_outing)
   end
 end

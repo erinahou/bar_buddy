@@ -5,27 +5,28 @@
   </div>
 
   <div>
-    <%= form.label :When_do_you_want_to_go_out? %>
-    <%= form.date_field :when_do_you_want_to_go_out, required: true %>
+    <%= form.label :date_of_outing %>
+    <%= form.date_field :date_of_outing, required: true %>
 
-    <%= form.label :time %>
-    <%= form.time_field :time, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :Which_area? %>
-    <%= form.text_field :which_area, required: true %>
-  </div>
-
-   <div>
-  <%= form.label :characteristics %>
-  <%= form.collection_select :characteristic_ids, @characteristics, :name, :name, { prompt: "Select Characteristics" }, multiple: true %>
+    <%= form.label :time_of_outing %>
+    <%= form.time_field :time_of_outing, required: true %>
   </div>
 
   <div>
     <%= form.label :invite_friends %>
     <%= form.text_field :invite_friends, placeholder: "Separate emails with commas" %>
   </div>
+
+  <div>
+    <%= form.label :area %>
+    <%= form.text_field :area, required: true %>
+  </div>
+
+   <div>
+  <%= form.label :characteristics %>
+  <%= form.collection_select :characteristic_ids, @characteristics, :style, :style, { prompt: "Select Characteristics" }, multiple: true %>
+  </div>
+
 
   <div>
     <%= form.submit "Create Group" %>
