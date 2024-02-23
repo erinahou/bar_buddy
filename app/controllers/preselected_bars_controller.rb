@@ -15,13 +15,14 @@ class PreselectedBarsController < ApplicationController
 
     selected_bars.each do |bar|
       unless PreselectedBar.exists?(bar_id: bar.id, group_id: @group.id)
-      PreselectedBar.create(bar_id: bar.id, group_id: @group.id)
+        PreselectedBar.create(bar_id: bar.id, group_id: @group.id)
+      end
     end
-  end
-    redirect_to @group, notice: 'Preselected bars added successfully!'
-  end
-  private
 
+    redirect_to group_preselected_bars_path(@group), notice: 'Preselected bars added successfully!'
+  end
+
+  private
 
   def set_characteristics
     @characteristics = ['pub', 'cocktail', 'wine bar', 'dive bar', 'with food', 'brewery', 'rooftop bar', 'kid friendly', 'dog friendly', 'speakeasy', 'distillery']

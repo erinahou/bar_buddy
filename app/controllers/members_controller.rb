@@ -13,11 +13,13 @@ class MembersController < ApplicationController
     if user
       # If a user with the matching email is found, create a new member record
       Member.create(user_id: user.id, group_id: params[:group_id])
-      redirect_to root_path, notice: 'Member added successfully!'
+      flash[:notice] = 'Member added successfully!'
     else
       # If no user with the matching email is found, handle the error accordingly
-      render :new, notice: 'No user found with that email.'
+      flash[:alert] = 'No user found with that email.'
     end
+
+    redirect_to new_group_member_path(group_id: params[:group_id])
   end
 
   private

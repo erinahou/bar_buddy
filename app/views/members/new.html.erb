@@ -1,8 +1,11 @@
-<%= form_tag({action: :create}, method: :post) do %>
+<%= form_tag({ action: :create }, method: :post) do %>
   <%# Email input field %>
-  <%= label_tag :email  %>
+  <%= label_tag :email %>
   <%= text_field_tag :email %>
 
   <%# Submit button %>
   <%= submit_tag 'Add Member' %>
+
+  <%# Next button %>
+  <%= link_to 'Next', new_group_preselected_bar_path(@group), class: 'btn btn-primary' %>
 <% end %>
