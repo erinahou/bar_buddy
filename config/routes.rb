@@ -14,12 +14,11 @@ Rails.application.routes.draw do
 
   # Groups
   resources :groups do
+    resources :members
     member do
-      get 'confirm'
-      get 'verdict'
-      delete 'destroy_member'
-      post 'add_member'
+      get :member
     end
+
     resources :members, only: [:index, :show]
     resources :votes, only: [:index, :new, :create]
     resources :preselected_bars, only: [:index,:new, :create]
