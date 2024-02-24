@@ -1,5 +1,18 @@
 <h1>hello</h1>
 
-<% @preselected_bars.each do |bar| %>
-  <p><%= bar.bar.name %></p>
+<%= form_tag({ controller: "votes", action: "create" }, method: :post) do %>
+  <% @preselected_bars.each do |preselected_bar| %>
+    <div>
+      <p><%= preselected_bar.bar.name %></p>
+      <label>
+        <%= radio_button_tag "vote_#{preselected_bar.id}", "true", checked: true %>
+        Yes
+      </label>
+      <label>
+        <%= radio_button_tag "vote_#{preselected_bar.id}", "false" %>
+        No
+      </label>
+    </div>
+  <% end %>
+  <%= submit_tag "Submit Votes" %>
 <% end %>
