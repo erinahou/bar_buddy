@@ -17,10 +17,9 @@ Rails.application.routes.draw do
       get 'verdict'
       get 'confirmation'
     end
+    resources :votes, only: [:create]
     resources :members, only: [:new, :create]
-    resources :preselected_bars, only: [:index, :new, :create] do
-      resources :votes, only: [:create] # Nesting votes under preselected bars to get this path /groups/:group_id/preselected_bars/:preselected_bar_id/votes
+    resources :preselected_bars, only: [:index, :new, :create]
   end
-
   # removed resources :users because this is already done through devise.
 end
