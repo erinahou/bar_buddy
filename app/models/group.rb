@@ -4,8 +4,7 @@ class Group < ApplicationRecord
   has_many :users, through: :members
   has_many :preselected_bars
 
-  # validates :which_area, presence: true
-  # validates :time, presence: true
-  # validates :invite_friends, presence: true
-
+  validates :title, presence: true
+  validates :date_of_outing, presence: true
+  validates :time_of_outing, presence: true
 end
