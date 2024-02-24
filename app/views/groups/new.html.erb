@@ -1,34 +1,6 @@
-<%= form_with model: @group, url: groups_path, method: :post do |form| %>
-  <div>
-    <%= form.label :title, "What's the title of the group?" %>
-    <%= form.text_field :title, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :date_of_outing %>
-    <%= form.date_field :date_of_outing, required: true %>
-
-    <%= form.label :time_of_outing %>
-    <%= form.time_field :time_of_outing, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :invite_friends %>
-    <%= form.text_field :invite_friends, placeholder: "Separate emails with commas" %>
-  </div>
-
-  <div>
-    <%= form.label :area %>
-    <%= form.text_field :area, required: true %>
-  </div>
-
-   <div>
-  <%= form.label :characteristics %>
-  <%= form.collection_select :characteristic_ids, @characteristics, :style, :style, { prompt: "Select Characteristics" }, multiple: true %>
-  </div>
-
-
-  <div>
-    <%= form.submit "Create Group" %>
-  </div>
+<%= simple_form_for(@group) do |f| %>
+  <%= f.input :title, label: "What's the title of your group?" %>
+  <%= f.input :date_of_outing, label: "When do you wanna go out?"%>
+  <%= f.input :time_of_outing, label: "At what time?"%>
+  <%= f.submit "Create Group" %>
 <% end %>
