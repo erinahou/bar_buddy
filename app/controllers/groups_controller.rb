@@ -8,10 +8,11 @@ class GroupsController < ApplicationController
     @group = current_user.groups.build(group_params)
 
     if @group.save
-      Characteristic.find(params[:id])
-      selected_bars = Bar.joins(:bar_characteristics).where(bar_characteristics: {characteristic_id: params[:group][:characteristic_ids]})
+      selected_bars = Bar.joins(:bar_characteristics).where(bar_characteristics: { characteristic_id: params[:group][:characteristic_ids] })
       selected_bars.each do |bar|
-        PreselectedBar.create(bar_id: bar.id, group_id: @group)
+        unless PreselectedBar.exists?(bar_id: bar.id, group_id: @group.id)
+          PreselectedBar.create(bar_id: bar.id, group_id: @group.id)
+        end
       end
       redirect_to groups_path, notice: 'Group created successfully!'
     else
