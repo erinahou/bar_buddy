@@ -18,9 +18,10 @@ Rails.application.routes.draw do
     member do
       get :member
     end
-    # resources :members, only: [:index, :show]
-    # resources :votes, only: [:index, :new, :create]
-    # resources :preselected_bars, only: [:index]
+
+    resources :members, only: [:index, :show]
+    resources :votes, only: [:index, :new, :create]
+    resources :preselected_bars, only: [:index,:new, :create]
   end
 
   # Users
