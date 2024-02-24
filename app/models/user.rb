@@ -7,9 +7,8 @@ class User < ApplicationRecord
   has_many :members, dependent: :destroy
   has_many :groups, through: :members
 
-
-  # validates :email, presence: true, uniqueness: true, format: { with: Devise.email_regexp }
-  # validates :password, presence: true, length: { minimum: 6 }, confirmation: true
-  # validates :first_name, presence: true, length: { maximum: 255 }
-  # validates :last_name, presence: true, length: { maximum: 255 }
+  validates :email, presence: true, uniqueness: true, format: { with: Devise.email_regexp }
+  validates :password, presence: true, length: { minimum: 6 }, confirmation: true
+  validates :first_name, presence: true, length: { maximum: 255 }
+  validates :last_name, presence: true, length: { maximum: 255 }
 end

@@ -6,17 +6,13 @@ class MembersController < ApplicationController
   end
 
   def create
-    # Extract the email parameter from the form submission
     email = params[:email]
-    # Perform a SQL query to find the user with the matching email
     user = User.find_by(email: email)
     if user
-      # If a user with the matching email is found, create a new member record
       Member.create(user_id: user.id, group_id: params[:group_id])
       flash[:notice] = 'Member added successfully!'
     else
-      # If no user with the matching email is found, handle the error accordingly
-      flash[:alert] = 'No user found with that email.'
+      render :new, flash[:alert] = 'No user found with that email.'
     end
 
     redirect_to new_group_member_path(group_id: params[:group_id])
