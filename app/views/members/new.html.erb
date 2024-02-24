@@ -1,0 +1,8 @@
+<%= form_tag({action: :create}, method: :post) do %>
+  <%# Email input field %>
+  <%= label_tag :email  %>
+  <%= text_field_tag :email %>
+
+  <%# Submit button %>
+  <%= submit_tag 'Add Member' %>
+<% end %>

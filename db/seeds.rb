@@ -67,4 +67,11 @@ bars.each do |bar|
   random_styles.each do |style|
     BarCharacteristic.create!(bar: bar, characteristic: style)
   end
+  #test users
+  user1 = User.create(email: 'john.doe@example.com', password: 'password', first_name: 'John', last_name: 'Doe')
+  user2 = User.create(email: 'jane.smith@example.com', password: 'password', first_name: 'Jane', last_name: 'Smith')
+  user3 = User.create(email: 'bob.johnson@example.com', password: 'password', first_name: 'Bob', last_name: 'Johnson')
+  user4 = User.create(email: 'alice.williams@example.com', password: 'password', first_name: 'Alice', last_name: 'Williams')
+  user5 = User.create(email: 'charlie.brown@example.com', password: 'password', first_name: 'Charlie', last_name: 'Brown')
+
 end

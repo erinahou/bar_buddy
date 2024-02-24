@@ -7,4 +7,5 @@ class Group < ApplicationRecord
   validates :title, presence: true
   validates :date_of_outing, presence: true
   validates :time_of_outing, presence: true
+
 end
