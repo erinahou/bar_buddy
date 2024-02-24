@@ -1,0 +1,16 @@
+<%= form_tag({action: :create}, method: :post) do %>
+   <div>
+    <%= label_tag :area %>
+    <%= text_field_tag :area, nil, required: true %>
+  </div>
+
+  <% @characteristics.each do |characteristic| %>
+    <div>
+      <%= check_box_tag 'preselected_bar[characteristic_ids][]', characteristic %>
+      <%= label_tag characteristic, characteristic %>
+    </div>
+  <% end %>
+  <div>
+    <%= submit_tag 'Create Preselected Bars' %>
+  </div>
+<% end %>
