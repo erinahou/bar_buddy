@@ -1,18 +1,53 @@
-<h1>hello</h1>
+<div>
+  <p>Suggestions for </p>
+</div>
 
 <%= form_tag({ controller: "votes", action: "create" }, method: :post) do %>
   <% @preselected_bars.each do |preselected_bar| %>
-    <div>
-      <p><%= preselected_bar.bar.name %></p>
-      <label>
-        <%= radio_button_tag "vote_#{preselected_bar.id}", "true", checked: true %>
-        Yes
-      </label>
-      <label>
-        <%= radio_button_tag "vote_#{preselected_bar.id}", "false" %>
-        No
-      </label>
+    <div class="bar-card">
+      <h3><%= preselected_bar.bar.name %></h3>
+      <p><%= preselected_bar.bar.display_address %></p>
+      <p><%= preselected_bar.bar.rating %></p>
+      <div class="thumbnail">
+        <%= image_tag preselected_bar.bar.image_url %>
+      </div>
+      <p><%= preselected_bar.bar.description %></p>
+      <%= link_to "More info", bar_path(preselected_bar.bar) %>
+      <div>
+        <label>
+          <%= radio_button_tag "vote_#{preselected_bar.id}", "true", checked: true %>
+          Yes
+        </label>
+        <label>
+          <%= radio_button_tag "vote_#{preselected_bar.id}", "false" %>
+          No
+        </label>
+      </div>
     </div>
   <% end %>
   <%= submit_tag "Submit Votes" %>
 <% end %>
+
+<!-- Testing Swiper Here -->
+
+<div class="swiper-container" data-controller="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <h3>Slide 1</h3>
+      <p>This is the first slide.</p>
+    </div>
+    <div class="swiper-slide">
+      <h3>Slide 2</h3>
+      <p>This is the second slide.</p>
+    </div>
+    <div class="swiper-slide">
+      <h3>Slide 3</h3>
+      <p>This is the third slide.</p>
+    </div>
+  </div>
+ <!-- Pagination -->
+  <div class="swiper-pagination"></div>
+ <!-- Navigation -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>

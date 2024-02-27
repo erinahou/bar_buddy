@@ -6,10 +6,16 @@
 // External libraries
 @import "bootstrap";
 @import "font-awesome";
+@import 'swiper/swiper-bundle.min.css';
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+* {
+  max-width: 430px; // To limit the viewport to mobile only
+  margin: 0 auto; // Just to see the app layed in the center of the browser for easy viewing
+}
 
 body {
   background-color: $bb-background;
