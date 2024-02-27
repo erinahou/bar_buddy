@@ -12,7 +12,12 @@ class MembersController < ApplicationController
       Member.create(user_id: user.id, group_id: params[:group_id])
       flash[:notice] = 'Member added successfully!'
     else
-      render :new, flash[:alert] = 'No user found with that email.'
+      render :new
+      flash.now[:alert] = 'No user found with that email.'
+    end
+
+    unless @group.members.exists?(user_id: current_user.id)
+      Member.create(user_id: current_user.id, group_id: @group.id)
     end
 
     redirect_to new_group_member_path(group_id: params[:group_id])

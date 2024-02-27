@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_20_094832) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_27_092235) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_20_094832) do
     t.bigint "creater_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "winning_bar_id"
     t.index ["creater_id"], name: "index_groups_on_creater_id"
   end
 
@@ -63,6 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_20_094832) do
     t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bar_id", "group_id"], name: "index_preselected_bars_on_bar_id_and_group_id", unique: true
     t.index ["bar_id"], name: "index_preselected_bars_on_bar_id"
     t.index ["group_id"], name: "index_preselected_bars_on_group_id"
   end

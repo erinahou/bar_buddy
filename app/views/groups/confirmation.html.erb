@@ -1,0 +1,6 @@
+<h1>Confirmation Page</h1>
+
+<% @member_votes_status.each do |member, status| %>
+  <% user = member.user %>
+  <p><%= user.email %> - <%= status %></p>
+<% end %>
