@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
   def new
     @group = Group.new
-    @group.creater_id = current_user.id
   end
 
   def create
@@ -9,10 +8,14 @@ class GroupsController < ApplicationController
     @group.creater_id = current_user.id
 
     if @group.save
-      redirect_to new_group_member_path(@group), notice: 'Group created successfully!'
+      redirect_to root_path, notice: 'Group created successfully!'
     else
       render :new
     end
+  end
+
+  def show
+    @group = Group.find(params[:id])
   end
 
   private
