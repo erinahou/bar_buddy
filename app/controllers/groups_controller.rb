@@ -6,7 +6,6 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.creater_id = current_user.id
-
     if @group.save
       redirect_to root_path, notice: 'Group created successfully!'
     else
