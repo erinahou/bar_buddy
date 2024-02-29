@@ -9,13 +9,11 @@ class MembersController < ApplicationController
     email = params[:email]
     user = User.find_by(email: email)
     group_id = params[:group_id]
+
     if user
-      if user.id == current_user.id
-        redirect_to new_group_member_path(group_id: group_id), alert: 'You cannot add yourself to the group.'
-        return
-      end
       @group = Group.find(group_id)
       member = Member.find_by(user_id: user.id, group_id: group_id)
+
       if member
         redirect_to new_group_member_path(group_id: group_id), alert: 'Member already exists in the group.'
       else
@@ -25,6 +23,13 @@ class MembersController < ApplicationController
     else
       flash.now[:alert] = "No user found..."
       render :new, status: :unprocessable_entity
+    end
+
+    if @group && user
+      member = Member.find_by(user_id: current_user.id, group_id: @group.id)
+      unless member
+        Member.create(user_id: current_user.id, group_id: @group.id)
+      end
     end
   end
 
