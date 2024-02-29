@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # Groups
 
-  resources :groups, only: [:new, :create, :edit] do # Specified only necessary actions
+  resources :groups, only: [:show, :new, :create, :edit] do # Specified only necessary actions
     member do
       get 'verdict', to: 'groups#verdict'
       get 'confirmation', to: 'groups#confirmation'

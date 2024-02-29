@@ -1,0 +1,10 @@
+<h1><%= @group.title %></h1>
+<p>Date of Outing: <%= @group.date_of_outing %></p>
+<p>Time of Outing: <%= @group.time_of_outing %></p>
+
+<h2>Members:</h2>
+<ul>
+  <% @group.members.each do |member| %>
+    <li><%= member.user.first_name %> <%= member.user.last_name %></li>
+  <% end %>
+</ul>
