@@ -1,5 +1,9 @@
 class GroupsController < ApplicationController
   def new
+    unless user_signed_in?
+      flash.alert = 'You must be signed in to create an article'
+      redirect_back_or_to({ action: 'index' })
+    end
     @group = Group.new
   end
 
