@@ -8,19 +8,24 @@ class MembersController < ApplicationController
   def create
     email = params[:email]
     user = User.find_by(email: email)
+    group_id = params[:group_id]
     if user
-      Member.create(user_id: user.id, group_id: params[:group_id])
-      flash[:notice] = 'Member added successfully!'
+      if user.id == current_user.id
+        redirect_to new_group_member_path(group_id: group_id), alert: 'You cannot add yourself to the group.'
+        return
+      end
+      @group = Group.find(group_id)
+      member = Member.find_by(user_id: user.id, group_id: group_id)
+      if member
+        redirect_to new_group_member_path(group_id: group_id), alert: 'Member already exists in the group.'
+      else
+        Member.create(user_id: user.id, group_id: group_id)
+        redirect_to new_group_member_path(group_id: group_id), notice: 'Member added successfully!'
+      end
     else
-      render :new
-      flash.now[:alert] = 'No user found with that email.'
+      flash.now[:alert] = "No user found..."
+      render :new, status: :unprocessable_entity
     end
-
-    unless @group.members.exists?(user_id: current_user.id)
-      Member.create(user_id: current_user.id, group_id: @group.id)
-    end
-
-    redirect_to new_group_member_path(group_id: params[:group_id])
   end
 
   private

@@ -5,8 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts "clearing db.."
+Characteristic.destroy_all
+Bar.destroy_all
+BarCharacteristic.destroy_all
+User.destroy_all
+
 characteristic_styles = ['pub', 'cocktail', 'wine bar', 'dive bar', 'with food', 'brewery', 'rooftop bar', 'kid friendly', 'dog friendly', 'speakeasy', 'distillery']
 
+puts "creating characteristic styles"
 characteristic_styles.each do |style|
   Characteristic.create!(style: style)
 end
@@ -53,7 +60,7 @@ bars_data = [
   { name: "Spread Eagle Hotel", description: "This is a great bar", rating: 3.2, display_address: "372 Bridge Rd, Richmond Victoria 3121, Australia", image_url: "https://s3-media2.fl.yelpcdn.com/bphoto/2TTzWNPdGjBFVY8Tn56COg/o.jpg" },
   { name: "Rah Bar", description: "This is a great bar", rating: 2.0, display_address: "163 Toorak Rd, South Yarra Victoria 3141, Australia", image_url: "https://s3-media1.fl.yelpcdn.com/bphoto/5uBP3OBjhznz-2tEfssShw/o.jpg" }
 ]
-
+puts "creating bars"
 bars_data.each do |bar_data|
   Bar.create!(bar_data)
 end
@@ -61,17 +68,18 @@ end
 bars = Bar.all
 characteristics = Characteristic.all
 
+puts "creating bar characteristics"
 bars.each do |bar|
   random_styles = characteristics.sample(2)
 
   random_styles.each do |style|
     BarCharacteristic.create!(bar: bar, characteristic: style)
   end
-  #test users
-  user1 = User.create(email: 'john.doe@example.com', password: 'password', first_name: 'John', last_name: 'Doe')
-  user2 = User.create(email: 'jane.smith@example.com', password: 'password', first_name: 'Jane', last_name: 'Smith')
-  user3 = User.create(email: 'bob.johnson@example.com', password: 'password', first_name: 'Bob', last_name: 'Johnson')
-  user4 = User.create(email: 'alice.williams@example.com', password: 'password', first_name: 'Alice', last_name: 'Williams')
-  user5 = User.create(email: 'charlie.brown@example.com', password: 'password', first_name: 'Charlie', last_name: 'Brown')
-
 end
+
+puts "creating test users"
+user1 = User.create(email: 'john.doe@example.com', password: 'password', first_name: 'John', last_name: 'Doe')
+user2 = User.create(email: 'jane.smith@example.com', password: 'password', first_name: 'Jane', last_name: 'Smith')
+user3 = User.create(email: 'bob.johnson@example.com', password: 'password', first_name: 'Bob', last_name: 'Johnson')
+user4 = User.create(email: 'alice.williams@example.com', password: 'password', first_name: 'Alice', last_name: 'Williams')
+user5 = User.create(email: 'charlie.brown@example.com', password: 'password', first_name: 'Charlie', last_name: 'Brown')
