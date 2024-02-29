@@ -12,6 +12,11 @@
 @import "components/index";
 @import "pages/index";
 
+* {
+  max-width: 480px; // Setting max width so that app only displays in mobile format
+  margin: 0 auto;
+}
+
 body {
   background-color: $bb-background;
   font-family: $my-font;
