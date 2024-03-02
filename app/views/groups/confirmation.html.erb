@@ -1,6 +1,19 @@
-<h1>Confirmation Page</h1>
+<h1>Your vote's in!</h1>
+<h4>
+  <% if @member_votes_status.values.all? { |status| status == "Votes Complete" } %>
+    The results are in!
+  <% else %>
+    We will notify you when the results are in!
+  <% end %>
+</h4>
 
 <% @member_votes_status.each do |member, status| %>
   <% user = member.user %>
   <p><%= user.email %> - <%= status %></p>
+<% end %>
+
+<% if @member_votes_status.values.all? { |status| status == "Votes Complete" } %>
+  <%= link_to "See The Winning Bar", verdict_group_path(@group), class: "btn btn-primary" %>
+<% else %>
+  <%= link_to "Go to Dashboard", dashboard_path, class: "btn btn-primary" %>
 <% end %>

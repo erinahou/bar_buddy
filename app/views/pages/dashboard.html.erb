@@ -1,19 +1,22 @@
 <h2>Active Groups</h2>
-<% if @active_groups.any? %>
-  <div class="row">
-    <% @active_groups.each do |group| %>
-      <div class="col-md-4 mb-4">
-        <div class="card custom-card">
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to group.title, group_path(group) %></h5>
-          </div>
+<div class="row">
+  <% @active_groups.each do |group| %>
+    <div class="col-md-4 mb-4">
+      <div class="card custom-card">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= link_to group.title, group_path(group) %>
+            <% if group.winning_bar.present? %>
+              <span class="text-success">&#10004;</span> <!-- Green tick -->
+            <% else %>
+              <span class="text-danger">&#10008;</span> <!-- Red cross -->
+            <% end %>
+          </h5>
         </div>
       </div>
-    <% end %>
-  </div>
-<% else %>
-  <p>No active groups at the moment.</p>
-<% end %>
+    </div>
+  <% end %>
+</div>
 
 <h2>Past Groups</h2>
 <% if @past_groups.any? %>
