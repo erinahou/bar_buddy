@@ -1,0 +1,10 @@
+<div>
+<% if @group.winning_bar %>
+  <p><%= @group.winning_bar.name %></p>
+  <p><%= @group.winning_bar.display_address %></p>
+  <p><%= @group.winning_bar.rating %></p>
+  <p><%= image_tag @group.winning_bar.image_url %></p>
+<% end %>
+</div>
+
+<%= link_to "Dashboard", dashboard_path, class: "btn btn-primary" %>
