@@ -1,28 +1,38 @@
-<p class="summary">
-Suggestions for <%= @group.date_of_outing %> in Brunswick for <%= @group.title %>
-</p>
+<div class="preselected-bar-content">
+  <p class="summary">
+    Suggestions for <%= @group.date_of_outing %> in Brunswick for <%= @group.title %>
+  </p>
 
-<%= form_tag({ controller: "votes", action: "create" }, method: :post) do %>
-  <% @preselected_bars.each do |preselected_bar| %>
-    <div class="bar-card-container">
-      <h4><%= preselected_bar.bar.name %></h4>
-      <p><%= preselected_bar.bar.display_address %></p>
-      <p>Rating: <%= preselected_bar.bar.rating %></p>
-      <div class="thumbnail-container">
-        <%= image_tag preselected_bar.bar.image_url, alt: "Thumbnail image of #{preselected_bar.bar.name}" %>
-      </div>
-      <p>Rating: <%= preselected_bar.bar.description %></p>
-      <div class="voting-buttons">
-        <label>
-          <%= radio_button_tag "vote_#{preselected_bar.id}", "true", checked: true %>
-          Yes
-        </label>
-        <label>
-          <%= radio_button_tag "vote_#{preselected_bar.id}", "false" %>
-          No
-        </label>
+  <%= form_tag({ controller: "votes", action: "create" }, method: :post, data: { controller: "swiper" }) do %>
+    <!-- Slider main container -->
+    <div class="swiper-container">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <% @preselected_bars.each do |preselected_bar| %>
+          <div class="swiper-slide">
+            <!-- Bar name, address, rating -->
+            <div class="card-content">
+              <h4><%= preselected_bar.bar.name %></h4>
+              <p><%= preselected_bar.bar.display_address %></p>
+              <p>Rating: <%= preselected_bar.bar.rating %></p>
+            </div>
+            <!-- Thumbnail image -->
+            <div class="card-content thumbnail-container">
+              <%= image_tag preselected_bar.bar.image_url, alt: "Thumbnail image of #{preselected_bar.bar.name}" %>
+            </div>
+            <!-- Bar description -->
+            <div class="card-content">
+              <p><%= preselected_bar.bar.description %></p>
+            </div>
+            <!-- Voting buttons (changed radio buttons into buttons to match UI and easier interaction) -->
+            <div class="card-content voting-buttons">
+              <button type="button" data-action="click->swiper#swipeNext" data-value="false">No</button>
+              <button type="button" data-action="click->swiper#swipeNext" data-value="true">Yes</button>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
-  <%= submit_tag "Submit Votes" %>
-<% end %>
+</div>

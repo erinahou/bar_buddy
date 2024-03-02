@@ -1,30 +1,54 @@
-.bar-card-container {
-  margin: 24px;
-  padding: 16px;
-  background-color: white;
-  border-radius: 8px;
+// Consider moving this first selected to pages > _preselected_bars
+.preselected-bar-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: A651FA;
 
-  h4 {
-    margin-bottom: 16px;
+  .summary {
+    text-align: center;
+    padding:  8px 24px;
   }
 
-  .voting-buttons {
+  // Need to make sure this target is specific to this page and not all forms. Come back to this.
+  form {
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
-.thumbnail-container {
+.swiper-container {
+  width: 80%;
+  height: 70vh;
+
+  .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+    padding: 16px;
+    background-color: white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .thumbnail-container {
   width: 100%;
-  height: 300px;
   overflow: hidden;
+  flex-grow: 2;
+  }
+
+  .card-content {
+    border: 1px solid red;
+  }
 
   img {
     width: 100%;
   }
-}
-
-// Move this class styling to pages _preselected. Leaving this here temporarily.
-.summary {
-  text-align: center;
-  margin-top: 32px;
 }
