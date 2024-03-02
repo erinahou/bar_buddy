@@ -78,3 +78,9 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+# To implement swiper rails https://github.com/nikmarchenko/swiper-rails
+# gem 'swiper-rails'
+
+# # To implement swiper as per https://rails-assets.org/#/components/swiper
+# gem 'rails-assets-swiper', source: 'https://rails-assets.org'
