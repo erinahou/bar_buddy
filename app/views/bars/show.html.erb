@@ -1,7 +1,24 @@
 <div>
-  <h1><%=@bar.name%></h1>
-  <p><%=@bar.display_address%></p>
+  <h3><%=@bar.name%></h3>
+  <p class="address"><%=@bar.display_address%></p>
+  <!-- Rating -->
+  <div class="rating">
+    <% barRating = @bar.rating.round %>
+    <% missingStar = 5 - barRating %>
+    <div>
+      <% barRating.times do %>
+        <i class="fa-solid fa-star fa-xs" style="color: rgb(0, 0, 0, 0.8);"></i>
+      <% end %>
+      <% missingStar.times do %>
+        <i class="fa-solid fa-star fa-xs" style="color: rgba(0, 0, 0, 0.2);"></i>
+      <% end %>
+    </div>
+    <p class="rating-in-int"><%= @bar.rating %></p>
+  </div>
+  <!-- Thumbnail image -->
+  <div class="thumbnail-container-rectangle">
+    <%= image_tag @bar.image_url, alt: "Thumbnail image of #{@bar.name}" %>
+  </div>
+  <!-- Bar description -->
   <p><%=@bar.description%></p>
-  <p><%=@bar.rating%></p>
-  <%= image_tag(@bar.image_url) %>
 </div>
