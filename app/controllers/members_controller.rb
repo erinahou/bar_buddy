@@ -15,14 +15,17 @@ class MembersController < ApplicationController
       member = Member.find_by(user_id: user.id, group_id: group_id)
 
       if member
-        redirect_to new_group_member_path(group_id: group_id), alert: 'Member already exists in the group.'
+        # redirect_to new_group_member_path(group_id: group_id), alert: 'Member already exists in the group.'
+        render json: { status: "exists", user: user }, status: :created
       else
         Member.create(user_id: user.id, group_id: group_id)
-        redirect_to new_group_member_path(group_id: group_id), notice: 'Member added successfully!'
+        # redirect_to new_group_member_path(group_id: group_id), notice: 'Member added successfully!'
+        render json: { status: "success", user: user }, status: :created
       end
     else
       flash.now[:alert] = "No user found..."
-      render :new, status: :unprocessable_entity
+      render json: { status: "No users", user: user }, status: :created
+      # render :new, status: :unprocessable_entity
     end
 
     if @group && user
