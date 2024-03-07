@@ -6,13 +6,19 @@
     <%= text_field_tag :area, nil, required: true %>
   </div>
 
-  <% @characteristics.each do |characteristic| %>
+  <div class="outer-container">
+  <div class="container">
+    <% @characteristics.each do |characteristic| %>
+      <div>
+        <label>
+          <%= check_box_tag 'preselected_bar[characteristic_ids][]', characteristic, false, id: "characteristic_#{characteristic}" %>
+          <span><%= label_tag "characteristic_#{characteristic}", characteristic %></span>
+        </label>
+      </div>
+    <% end %>
     <div>
-      <%= check_box_tag 'preselected_bar[characteristic_ids][]', characteristic %>
-      <%= label_tag characteristic, characteristic %>
+      <%= submit_tag 'Create Preselected Bars', class: 'btn btn-primary' %>
     </div>
-  <% end %>
-  <div>
-    <%= submit_tag 'Create Preselected Bars' %>
+  </div>
   </div>
 <% end %>
