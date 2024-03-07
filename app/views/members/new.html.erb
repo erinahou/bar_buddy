@@ -1,13 +1,19 @@
+<div class="main-content">
+  <%= form_tag({ action: :create }, method: :post, data: { controller: "member", action: "submit->member#add"}) do %>
+    <%# Email input field %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, nil, data: {member_target: "emailInput"} %>
 
+    <%# Submit button %>
+    <%= submit_tag 'Add Member' %>
 
-<%= form_tag({ action: :create }, method: :post) do %>
-  <%# Email input field %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
+    <%# List of emails %>
+    <p>Friends you've added</p>
+    <ul data-member-target="emailList">
 
-  <%# Submit button %>
-  <%= submit_tag 'Add Member' %>
+    </ul>
 
-  <%# Next button %>
-  <%= link_to 'Next', new_group_preselected_bar_path(@group), class: 'btn btn-primary' %>
-<% end %>
+    <%# Next button %>
+    <%= link_to 'Next', new_group_preselected_bar_path(@group), class: 'btn btn-primary' %>
+  <% end %>
+</div>
