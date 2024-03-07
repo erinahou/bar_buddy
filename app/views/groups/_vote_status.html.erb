@@ -1,0 +1,8 @@
+<p id="vote_status_<%= user.id %>">
+  <%= user.first_name %> <%= user.last_name %> -
+  <% if status == :complete %>
+    <i class="fas fa-check" style="color: green;"></i>
+  <% else %>
+    <i class="fas fa-times" style="color: red;"></i>
+  <% end %>
+</p>

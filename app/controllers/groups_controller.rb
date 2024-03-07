@@ -20,21 +20,15 @@ class GroupsController < ApplicationController
       render :new
     end
   end
+
   def confirmation
     @group = Group.find(params[:id])
     @preselected_bars = @group.preselected_bars.includes(:votes)
 
-    total_preselected_bars = @preselected_bars.count
     @member_votes_status = {}
-
     @group.members.each do |member|
-      member_votes = member.user.votes.where(preselected_bar_id: @preselected_bars.pluck(:id)).distinct.count
-
-      if member_votes == total_preselected_bars
-        @member_votes_status[member] = "Votes Complete"
-      else
-        @member_votes_status[member] = "Votes Pending"
-      end
+      status = @group.votes_complete_for?(member.user) ? :complete : :pending
+      @member_votes_status[member] = status
     end
   end
 
