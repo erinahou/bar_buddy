@@ -1,3 +1,4 @@
+<%= turbo_stream_from "votes" %>
 <h1>Your vote's in!</h1>
 <h4>
   <% if @member_votes_status.values.all? { |status| status == "Votes Complete" } %>
@@ -9,7 +10,14 @@
 
 <% @member_votes_status.each do |member, status| %>
   <% user = member.user %>
-  <p><%= user.email %> - <%= status %></p>
+  <p id="vote_status_<%= user.id %>">
+    <%= user.first_name %> <%= user.last_name %> -
+    <% if status == :complete %>
+      <i class="fas fa-check" style="color: green;"></i>
+    <% else %>
+      <i class="fas fa-times" style="color: red;"></i>
+    <% end %>
+  </p>
 <% end %>
 
 <% if @member_votes_status.values.all? { |status| status == "Votes Complete" } %>
