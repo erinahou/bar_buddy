@@ -1,54 +1,54 @@
-// Consider moving this first selected to pages > _preselected_bars
-.preselected-bar-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: A651FA;
-
-  .summary {
-    text-align: center;
-    padding:  8px 24px;
-  }
-
-  // Need to make sure this target is specific to this page and not all forms. Come back to this.
-  form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
 .swiper-container {
-  width: 80%;
-  height: 70vh;
+  width: 84%;
+
+  .swiper-wrapper {
+    display: flex;
+  }
 
   .swiper-slide {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
     border-radius: 18px;
     font-size: 22px;
     font-weight: bold;
-    color: black;
-    padding: 16px;
+    padding: 24px 16px;
     background-color: white;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   }
 
-  .thumbnail-container {
-  width: 100%;
-  overflow: hidden;
-  flex-grow: 2;
+  .address {
+    max-width: 100%; // Adjust the width as needed
+    overflow: hidden;
+    text-overflow: ellipsis; // Keep address in one line
+    white-space: nowrap; // Prevent line breaks
+    color: $bb-txt-black-secondary;
   }
 
-  .card-content {
-    border: 1px solid red;
+  .rating-in-int {
+    color: $bb-txt-black-secondary;
   }
 
-  img {
-    width: 100%;
+  .description {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .voting-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+}
+
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  i {
+    color: $bb-txt-black-tertiary;
   }
 }

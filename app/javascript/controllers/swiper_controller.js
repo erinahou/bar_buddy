@@ -8,11 +8,6 @@ export default class extends Controller {
       effect: "cards",
       grabCursor: true,
       allowTouchMove: false, // Disable direct swiping by user
-
-      // // And if we need scrollbar
-      // scrollbar: {
-      //   el: '.swiper-scrollbar',
-      // },
     });
   }
 
@@ -32,5 +27,4 @@ export default class extends Controller {
     const form = this.element; // Access the form element
     form.submit(); // Submit the form
   }
-
 }
