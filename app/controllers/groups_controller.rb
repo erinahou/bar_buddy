@@ -15,6 +15,8 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.creater_id = current_user.id
     if @group.save
+      @group.members.create(user_id: current_user.id)
+
       redirect_to new_group_member_path(group_id: @group.id), notice: 'Group created successfully!'
     else
       render :new
@@ -56,6 +58,11 @@ class GroupsController < ApplicationController
       if @group.winning_bar_id.nil?
         if @winning_bar.present?
           @group.update(winning_bar_id: @winning_bar.id)
+          @group.members.each do |member|
+            UserMailer.verdict_email(member.user, @winning_bar, @group.date_of_outing, @group.time_of_outing).deliver_now
+          end
+
+          flash[:notice] = 'Verdict and emails sent successfully!'
         else
           flash.now[:alert] = 'No winning bar selected.'
         end
@@ -66,7 +73,6 @@ class GroupsController < ApplicationController
       flash.now[:alert] = 'Votes are not completed for all members yet.'
     end
   end
-
   private
 
   def group_params

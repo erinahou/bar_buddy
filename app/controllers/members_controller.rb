@@ -4,7 +4,6 @@ class MembersController < ApplicationController
   def new
     @member = Member.new
   end
-
   def create
     email = params[:email]
     user = User.find_by(email: email)
@@ -21,18 +20,12 @@ class MembersController < ApplicationController
         Member.create(user_id: user.id, group_id: group_id)
         # redirect_to new_group_member_path(group_id: group_id), notice: 'Member added successfully!'
         render json: { status: "success", user: user }, status: :created
+        UserMailer.member_added_email(current_user, user, @group).deliver_now
       end
     else
       flash.now[:alert] = "No user found..."
       render json: { status: "No users", user: user }, status: :created
       # render :new, status: :unprocessable_entity
-    end
-
-    if @group && user
-      member = Member.find_by(user_id: current_user.id, group_id: @group.id)
-      unless member
-        Member.create(user_id: current_user.id, group_id: @group.id)
-      end
     end
   end
 

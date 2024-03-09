@@ -21,7 +21,10 @@ module BarBuddy
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    # Set the application time zone to Melbourne (AEST)
+    config.time_zone = 'Melbourne'
+    #
+    # config.eager_load_paths << Rails.root.join("extras")
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
