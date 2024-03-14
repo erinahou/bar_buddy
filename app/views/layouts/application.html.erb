@@ -13,10 +13,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
+    <!-- Flatpickr to enhance datepicker in our form -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   </head>
 
-  <body>
-    <%= render "shared/navbar" %>
+  <body data-controller="background-color" data-current-route="<%= request.path %>">
     <%= render "shared/flashes" %>
 
     <%= yield %>

@@ -10,3 +10,4 @@ pin "@popperjs/core", to: "popper.js", preload: true
 pin "mapbox-gl" # @3.1.2
 pin "process" # @2.0.1
 pin "mapkick/bundle", to: "mapkick.bundle.js"
+pin "flatpickr" # @4.6.13

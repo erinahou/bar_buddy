@@ -1,36 +1,51 @@
-<h2>Active Groups</h2>
-<div class="row">
-  <% @active_groups.each do |group| %>
-    <div class="col-md-4 mb-4">
-      <div class="card custom-card">
-        <div class="card-body">
-          <h5 class="card-title">
-            <%= link_to group.title, group_path(group) %>
-            <% if group.winning_bar.present? %>
-              <span class="text-success">&#10004;</span> <!-- Green tick -->
-            <% else %>
-              <span class="text-danger">&#10008;</span> <!-- Red cross -->
-            <% end %>
-          </h5>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<div class="main-content dashboard">
+  <h3>Hi, <%= current_user.first_name %>!</h3>
 
-<h2>Past Groups</h2>
-<% if @past_groups.any? %>
-  <div class="row">
-    <% @past_groups.each do |group| %>
-      <div class="col-md-4 mb-4">
-        <div class="card custom-card">
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to group.title, group_path(group) %></h5>
-          </div>
-        </div>
-      </div>
-    <% end %>
+  <!-- Active groups -->
+  <div class="group-container">
+    <h5>Active groups</h5>
+    <div class="group-list">
+      <% @active_groups.each do |group| %>
+          <%= link_to group_path(group), class:"group-card" do %>
+            <p class="card-title">
+              <%= group.title %>
+            </p>
+            <div>
+              <% if group.winning_bar.present? %>
+                <i class="fa-solid fa-check"></i>
+              <% else %>
+                <i class="fa-regular fa-clock"></i>
+              <% end %>
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+          <% end %>
+      <% end %>
+    </div>
   </div>
-<% else %>
-  <p>No past groups available.</p>
-<% end %>
+
+  <!-- Past groups -->
+  <div class="group-container">
+    <h5>Past groups</h5>
+    <div class="group-list">
+      <% if @past_groups.any? %>
+        <% @past_groups.each do |group| %>
+          <%= link_to group_path(group), class:"group-card" do %>
+            <p class="card-title">
+              <%= group.title %>
+            </p>
+            <div>
+              <% if group.winning_bar.present? %>
+                <i class="fa-solid fa-check"></i>
+              <% else %>
+                <i class="fa-regular fa-clock"></i>
+              <% end %>
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p>No past groups available.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

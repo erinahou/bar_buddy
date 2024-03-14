@@ -9,15 +9,23 @@ $green: #1EDD88;
 $gray: #0E0000;
 $light-gray: #F4F4F4;
 
-// Bar Buddy
-$bb-primary: #A64DFF;
+// Bar buddy general
+$bb-primary: rgb(166, 77, 255);
 $bb-background: #E1F6FF;
+$bb-accept: #0EE056;
+$bb-reject: #F76767;
+$bb-pending: #FFB627;
+$bb-white: white;
+$bb-transparent: rgba(255, 255, 255, 0);
+$bb-primary-opacity: rgba(166, 77, 255, 0.3);
+
+// Bar Buddy text
 $bb-txt-black-primary: rgba(0, 0, 0, 0.8);
 $bb-txt-black-secondary: rgba(0, 0, 0, 0.5);
 $bb-txt-black-tertiary: rgba(0, 0, 0, 0.3);
 $bb-txt-white-primary: rgb(255, 255, 255);
 $bb-txt-white-secondary: rgba(255, 255, 255, 0.5);
 $bb-txt-white-tertiary: rgba(255, 255, 255, 0.2);
-$bb-accept: #0EE056;
-$bb-reject: #F76767;
-$bb-white: white;
+
+// Bar Buddy border
+$bb-border-black: rgba(0, 0, 0, 0.2);

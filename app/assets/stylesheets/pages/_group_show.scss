@@ -1,0 +1,14 @@
+.group-show {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 32px;
+
+  h5 {
+    margin-bottom: 16px;
+  }
+
+  .user-vote-status-container {
+    padding: 0;
+  }
+}
