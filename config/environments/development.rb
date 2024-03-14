@@ -27,15 +27,18 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.mailgun.org',
-    port: 587,
-    domain: 'sandboxe9346d8ae9a74fa7b06c370a08923a0f.mailgun.org', # Use your actual sandbox domain
-    user_name: 'postmaster@sandboxe9346d8ae9a74fa7b06c370a08923a0f.mailgun.org', # Use the 'Username' provided by Mailgun
-    password: '1fd55b22488212828be9f3fc8a1bf178-2c441066-a592500e', # Use the 'Default password' provided by Mailgun
-    authentication: 'plain',
-    enable_starttls_auto: true
-  }
+
+  # Check if the SMTP_SETTINGS environment variable is set
+  if ENV['SMTP_SETTINGS']
+    # Parse the SMTP_SETTINGS environment variable from JSON string to a Ruby hash and symbolize keys
+    smtp_settings = JSON.parse(ENV['SMTP_SETTINGS']).symbolize_keys
+
+    # Assign the parsed settings to action_mailer.smtp_settings
+    config.action_mailer.smtp_settings = smtp_settings
+  else
+    # Optional: Raise an error or warning if the SMTP_SETTINGS variable is not set
+    raise 'SMTP settings environment variable is not set!'
+  end
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false

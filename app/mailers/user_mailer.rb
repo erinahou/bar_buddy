@@ -16,3 +16,4 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "The Nominated Bar Is...")
   end
 end
+
