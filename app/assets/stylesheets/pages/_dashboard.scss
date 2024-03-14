@@ -1,0 +1,50 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.group-container {
+  .group-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 8px;
+  }
+}
+
+// Consider moving group-card to a /components, and giving it a generic name\
+.group-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff; /* White background */
+  border: 1px solid #ffffff; /* White border */
+  border-radius: 8px; /* Slightly rounded corners */
+  text-decoration: none;
+  padding: 16px;
+
+  p {
+    color: $bb-txt-black-primary;
+  }
+
+  i {
+    margin-left: 8px;
+  }
+
+  .fa-check {
+    color: $bb-accept;
+  }
+
+  .fa-clock {
+    color: $bb-pending
+  }
+
+  .fa-chevron-right {
+    color: $bb-txt-black-secondary;
+  }
+
+  .fa-trophy {
+    color: $bb-accept;
+  }
+}

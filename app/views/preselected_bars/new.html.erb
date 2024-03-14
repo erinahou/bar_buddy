@@ -1,16 +1,32 @@
-<%= form_tag({action: :create}, method: :post) do %>
-   <div>
-    <%= label_tag :area %>
-    <%= text_field_tag :area, nil, required: true %>
-  </div>
-
-  <% @characteristics.each do |characteristic| %>
+<!-- Progress bar -->
+<div class="progress" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar progress-bar-striped" style="width: 100%"></div>
+</div>
+<!-- Main content -->
+<div class="main-content onboarding">
+  <!-- Form -->
+  <%= form_tag({action: :create}, method: :post, class: "simple_form") do %>
     <div>
-      <%= check_box_tag 'preselected_bar[characteristic_ids][]', characteristic %>
-      <%= label_tag characteristic, characteristic %>
+      <%= label_tag :area, "Which area?", class: "label" %>
+      <%= text_field_tag :area, nil, class: "form-control", required: true %>
+    </div>
+
+    <h6>... and what kind of place?</h6>
+    <div class="outer-container">
+      <div class="container">
+        <% @characteristics.each do |characteristic| %>
+          <div>
+            <label>
+              <%= check_box_tag 'preselected_bar[characteristic_ids][]', characteristic, false, id: "characteristic_#{characteristic}" %>
+              <span><%= label_tag "characteristic_#{characteristic}", characteristic %></span>
+            </label>
+          </div>
+        <% end %>
+        <div>
+          <%= submit_tag 'Next', class: 'btn btn-primary' %>
+        </div>
+      </div>
     </div>
   <% end %>
-  <div>
-    <%= submit_tag 'Create Preselected Bars' %>
-  </div>
-<% end %>
+  <!-- Next button -->
+</div>
