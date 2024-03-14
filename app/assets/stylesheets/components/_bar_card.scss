@@ -18,14 +18,6 @@
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   }
 
-  .address {
-    max-width: 100%; // Adjust the width as needed
-    overflow: hidden;
-    text-overflow: ellipsis; // Keep address in one line
-    white-space: nowrap; // Prevent line breaks
-    color: $bb-txt-black-secondary;
-  }
-
   .rating-in-int {
     color: $bb-txt-black-secondary;
   }
@@ -40,6 +32,14 @@
     justify-content: center;
     gap: 16px;
   }
+}
+
+.address {
+  max-width: 100%; // Adjust the width as needed
+  overflow: hidden;
+  text-overflow: ellipsis; // Keep address in one line
+  white-space: nowrap; // Prevent line breaks
+  color: $bb-txt-black-secondary;
 }
 
 

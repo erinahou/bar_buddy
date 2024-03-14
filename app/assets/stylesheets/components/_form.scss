@@ -1,0 +1,40 @@
+// Styling for all things form related
+input {
+  height: 12px 16px !important;
+}
+
+.onboarding {
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  label, ul {
+    font-size: 22px;
+  }
+
+  label {
+    color: $bb-txt-black-primary;
+  }
+
+  input {
+    margin: 4px 0 8px 0;
+  }
+
+  .form-control {
+    font-size: 20px;
+    padding: 12px 16px;
+  }
+}
+
+.add-member-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+
+  .input {
+    flex-grow: 2;
+  }
+}

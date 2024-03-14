@@ -1,3 +1,41 @@
-<% if @group.winning_bar %>
-  <p>The winning bar is: <%= @group.winning_bar.name %></p>
-<% end %>
+<div class="main-content verdict">
+  <% winning_bar = @group.winning_bar %>
+  <% if @group.winning_bar %>
+    <h3>Winner</h3>
+
+    <div class="winner-card">
+      <!-- Winner badge -->
+      <div class="winner-badge">
+        <i class="fa-solid fa-trophy"></i>
+      </div>
+      <!-- Bar name, address, rating -->
+      <div>
+        <h4><%= winning_bar.name %></h4>
+        <p class="address"><%= winning_bar.display_address %></p>
+        <!-- Rating -->
+        <div class="rating">
+          <% barRating = winning_bar.rating.round %>
+          <% missingStar = 5 - barRating %>
+          <div>
+            <% barRating.times do %>
+              <i class="fa-solid fa-star fa-xs" style="color: rgb(0, 0, 0, 0.8);"></i>
+            <% end %>
+            <% missingStar.times do %>
+              <i class="fa-solid fa-star fa-xs" style="color: rgba(0, 0, 0, 0.2);"></i>
+            <% end %>
+          </div>
+          <p class="rating-in-int"><%= winning_bar.rating %></p>
+        </div>
+      </div>
+      <!-- Thumbnail image -->
+      <div class="thumbnail-container-rectangle">
+        <%= image_tag winning_bar.image_url, alt: "Thumbnail image of #{winning_bar.name}" %>
+      </div>
+      <!-- Bar description -->
+      <div class="description">
+        <p><%= winning_bar.description %></p>
+        <%= link_to "More info", bar_path(winning_bar), class: "hyperlink text-center"%>
+      </div>
+    </div>
+  <% end %>
+</div>

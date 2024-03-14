@@ -1,19 +1,31 @@
-<div class="main-content">
-  <%= form_tag({ action: :create }, method: :post, data: { controller: "member", action: "submit->member#add"}) do %>
-    <%# Email input field %>
-    <%= label_tag :email %>
-    <%= text_field_tag :email, nil, data: {member_target: "emailInput"} %>
+<!-- Progress bar -->
+<div class="progress" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar" style="width: 66.66%"></div>
+</div>
+<!-- Main content -->
+<div class="main-content onboarding">
+  <!-- Form -->
+  <%= form_tag({ action: :create }, method: :post, class: "simple_form", data: { controller: "member", action: "submit->member#add" }) do %>
+      <div class="add-member-container">
+        <div class="input string optional member_email">
+          <%= label_tag :email, "Who are you inviting?", class: "label" %>
+          <%= text_field_tag :email, nil, class: "string email form-control", data: { member_target: "emailInput" } %>
+        </div>
+        <div class="actions">
+          <%= submit_tag "Add", class: "btn btn-secondary" %>
+        </div>
+      </div>
 
-    <%# Submit button %>
-    <%= submit_tag 'Add Member' %>
+    <!-- Invite list -->
+    <div class="list">
+      <p>Your invite list:</p>
+      <ul data-member-target="emailList">
+      </ul>
+    </div>
 
-    <%# List of emails %>
-    <p>Friends you've added</p>
-    <ul data-member-target="emailList">
-
-    </ul>
-
-    <%# Next button %>
-    <%= link_to 'Next', new_group_preselected_bar_path(@group), class: 'btn btn-primary' %>
+    <!-- Next button -->
+    <div class="actions">
+      <%= link_to 'Next', new_group_preselected_bar_path(@group), class: 'btn btn-primary' %>
+    </div>
   <% end %>
 </div>
