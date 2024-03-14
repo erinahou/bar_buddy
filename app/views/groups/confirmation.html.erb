@@ -1,27 +1,60 @@
-<%= turbo_stream_from "votes" %>
-<h1>Your vote's in!</h1>
-<h4>
-  <% if @member_votes_status.values.all? { |status| status == "Votes Complete" } %>
-    The results are in!
-  <% else %>
-    We will notify you when the results are in!
-  <% end %>
-</h4>
+<div class="main-content confirmation"> <!-- wrapped content in main-content for css -->
+  <%= turbo_stream_from "votes" %>
+  <div class="intro">
+    <h2>Your vote's in!</h2>
+    <p>
+      <% if @member_votes_status.values.all? { |status| status == "Votes Complete" } %>
+        The results are in!
+      <% else %>
+        We'll notify you when all the results are in.
+      <% end %>
+    </p>
+  </div>
 
-<% @member_votes_status.each do |member, status| %>
-  <% user = member.user %>
-  <p id="vote_status_<%= user.id %>">
-    <%= user.first_name %> <%= user.last_name %> -
-    <% if status == :complete %>
-      <i class="fas fa-check" style="color: green;"></i>
-    <% else %>
-      <i class="fas fa-times" style="color: red;"></i>
+  <div class= "user-vote-status-container">
+    <% @member_votes_status.each do |member, status| %>
+      <% user = member.user %>
+      <div id="vote_status_<%= user.id %>" class="user-vote-status"> <!-- Changed from p to div (EH) -->
+        <div class="avatar-with-badge">
+          <!-- Initial avatar -->
+          <div class="avatar-initials">
+            <span><%= user.first_name[0].upcase %></span>
+            <span><%= user.last_name[0].upcase %></span>
+          </div>
+          <!-- Status badge -->
+          <% if status == :complete %>
+            <div class="avatar-badge badge-accept">
+              <i class="fa-solid fa-check"></i>
+            </div>
+          <% else %>
+            <div class="avatar-badge badge-pending">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+          <% end %>
+        </div>
+        <%= user.first_name %> <%= user.last_name %>
+      </div>
     <% end %>
-  </p>
-<% end %>
+  </div>
 
-<% if @member_votes_status.values.all? { |status| status == "Votes Complete" } %>
-  <%= link_to "See The Winning Bar", verdict_group_path(@group), class: "btn btn-primary" %>
-<% else %>
-  <%= link_to "Go to Dashboard", dashboard_path, class: "btn btn-primary" %>
-<% end %>
+  <% if @member_votes_status.values.all? { |status| status == "Votes Complete" } %>
+    <%= link_to "See The Winning Bar", verdict_group_path(@group), class: "btn btn-primary" %>
+  <% else %>
+    <%= link_to "Go to Dashboard", dashboard_path, class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<!-- Original code
+
+ <% @member_votes_status.each do |member, status| %>
+    <% user = member.user %>
+    <p id="vote_status_<%= user.id %>">
+      <%= user.first_name %> <%= user.last_name %> -
+      <% if status == :complete %>
+        <i class="fas fa-check" style="color: green;"></i>
+      <% else %>
+        <i class="fas fa-times" style="color: red;"></i>
+      <% end %>
+    </p>
+  <% end %>
+-->

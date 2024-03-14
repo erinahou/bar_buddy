@@ -37,7 +37,6 @@ export default class extends Controller {
       console.log('Member created:', data);
       if (data.status == "success") {
         this.emailListTarget.insertAdjacentHTML("beforeend", `<li>${data.user.email}</li>`);
-        form.classList.remove("was-validated")
       };
     })
     .catch(error => {

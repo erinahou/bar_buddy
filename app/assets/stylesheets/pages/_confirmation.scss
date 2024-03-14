@@ -1,0 +1,23 @@
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 32px;
+
+  .intro {
+    text-align: center;
+  }
+}
+
+.user-vote-status-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+.user-vote-status {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

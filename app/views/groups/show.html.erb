@@ -1,12 +1,54 @@
-<h1><%= @group.title %></h1>
-<p>Date of Outing: <%= @group.date_of_outing %></p>
-<p>Time of Outing: <%= @group.time_of_outing %></p>
-
-<h2>Members:</h2>
-<ul>
-  <% @group.members.each do |member| %>
-    <li><%= member.user.first_name %> <%= member.user.last_name %></li>
+<div class="main-content group-show">
+<div>
+  <h3><%= @group.title %></h3>
+  <p>
+    <%= @group.date_of_outing.strftime("%a, %e %b") %> at
+    <%= @group.time_of_outing.strftime("%l : %M %p")%>
+  </p>
+</div>
+<!--Verdict -->
+<div>
+  <h5>Verdict</h5>
+  <% if @group.winning_bar.present? %>
+    <%= link_to verdict_group_path(@group), class:"group-card" do %>
+      <p class="card-title">
+        <%= @group.winning_bar.name %>
+      </p>
+      <div>
+        <i class="fa-solid fa-trophy"></i>
+        <i class="fa-solid fa-chevron-right"></i>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="group-card">
+      <p>Pending results</p>
+      <i class="fa-regular fa-clock"></i>
+    </div>
   <% end %>
-</ul>
+</div>
 
-<%= link_to "Back to Dashboard", dashboard_path, class: "btn btn-primary" %>
+<!-- Members -->
+<div>
+  <h5>Members</h5>
+  <div class="user-vote-status-container">
+    <% @group.members.each do |member| %>
+      <!--<li><%= member.user.first_name %> <%= member.user.last_name %></li>-->
+      <!-- New code -->
+      <% user = member.user %>
+      <div id="vote_status_<%= user.id %>" class="user-vote-status"> <!-- Changed from p to div (EH) -->
+        <div class="avatar-with-badge">
+          <!-- Initial avatar -->
+          <div class="avatar-initials">
+            <span><%= user.first_name[0].upcase %></span>
+            <span><%= user.last_name[0].upcase %></span>
+          </div>
+          <!-- Status badge -->
+        </div>
+        <%= user.first_name %> <%= user.last_name %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+  <%= link_to "Back to Dashboard", dashboard_path, class: "btn btn-primary" %>
+</div>

@@ -1,3 +1,8 @@
+.btn {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
 .btn-primary {
   color: $bb-white;
 }
@@ -8,6 +13,12 @@
 
 .btn-primary:active {
   color: $bb-white;
+}
+
+.btn-secondary {
+  border: 1px solid $bb-primary;
+  background-color: rgba(255, 255, 255, 0);
+  color: $bb-primary;
 }
 
 // BB specific buttons

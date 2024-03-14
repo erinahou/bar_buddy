@@ -13,10 +13,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
+    <!-- Flatpickr to enhance datepicker in our form -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   </head>
 
-  <body>
-    <%= render "shared/navbar" %>
+  <body data-controller="background-color" data-current-route="<%= request.path %>">
     <%= render "shared/flashes" %>
 
     <%= yield %>
@@ -24,4 +25,6 @@
 
   <!-- Swiper from CDN (script)-->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+ <!-- MAPBOX (script)-->
+ <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
 </html>
