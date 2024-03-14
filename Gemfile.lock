@@ -117,6 +117,7 @@ GEM
     ffi (1.16.3)
     font-awesome-sass (6.5.1)
       sassc (~> 2.0)
+    geocoder (1.8.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -140,6 +141,7 @@ GEM
       net-imap
       net-pop
       net-smtp
+    mapkick-rb (0.1.5)
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -272,8 +274,10 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass (~> 6.1)
+  geocoder
   importmap-rails
   jbuilder
+  mapkick-rb
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.8)
