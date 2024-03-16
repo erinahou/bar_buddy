@@ -1,6 +1,11 @@
-<%= render "shared/navbar" %>
-<div class="main-content homepage-content">
-  <h1>Bar Buddy</h1>
-  <h5>for indecisive humans</h5>
-  <%= link_to "Get started", new_group_path, class: "btn btn-primary" %>
+<div class="gradient-body">
+  <div class="homepage-content">
+    <div class="bb-logo">
+      <p>BB</p>
+    </div>
+    <h1>Bar Buddy</h1>
+    <h5>for indecisive humans</h5>
+    <%= link_to "Get started", new_group_path, class: "btn btn-secondary" %>
+    <%= image_tag "https://res.cloudinary.com/dmvbynqto/image/upload/v1710554494/bb-stack-homepage_2_uh9qjo.svg", alt: "Bar buddy vote cards", class: "stack"%>
+  </div>
 </div>

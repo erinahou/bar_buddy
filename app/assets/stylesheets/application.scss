@@ -28,6 +28,13 @@ body {
   margin: 40px 16px;
 }
 
+.gradient-body {
+  background: linear-gradient(-45deg, #91F2FF, #AEFF47, #55e0ff, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 3s ease infinite;
+  height: 100vh;
+}
+
 // BB's list of font rules (based on Figma)
 
 h1 {
@@ -67,7 +74,7 @@ h5 {
 
 h6 {
   font-size: 22px;
-  line-height: 22px;
+  line-height: 28px;
   font-weight: 400;
   color: $bb-txt-black-primary;
 }
@@ -92,7 +99,8 @@ li {
 .hyperlink {
   font-size: 16px;
   font-weight: 400;
-  color: $bb-primary;
+  color: $bb-txt-black-primary;
+  text-decoration: underline;
 }
 
 
@@ -166,7 +174,7 @@ li {
   background-color: $bb-primary-opacity;
   border: 1px solid $bb-primary;
   color: #fff;
-  box-shadow: 0 2px 20px grey;
+  // box-shadow: 0 2px 20px grey;
 }
 
 // ::view-transition-old(root),
@@ -210,4 +218,17 @@ li {
 ::view-transition-old(root) {
   animation: 90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
   300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+// Gradient keyframe
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
