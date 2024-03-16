@@ -6,5 +6,6 @@
 <body>
   <h1><%= @inviting_user.first_name %> has invited you to the <%= @group.title %> group on Bar Buddy</h1>
   <p>Please follow the link to have your say on what bar your group goes to on <%= @date_of_outing %> at <%= @time_of_outing %> </p>
+  <p><a href="<%= @preselected_bars_url %>">Preselected Bars Page</a></p>
 </body>
 </html>
