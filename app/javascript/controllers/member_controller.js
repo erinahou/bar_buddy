@@ -28,6 +28,7 @@ export default class extends Controller {
 
     fetch(event.target.action, requestDetails) // Complete the fetch call by providing the URL and request details
     .then(response => {
+      console.log('response: ', response)
       if (!response.ok) {
       throw new Error('Network response was not ok');
       };
