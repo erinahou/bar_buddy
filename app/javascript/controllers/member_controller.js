@@ -36,7 +36,7 @@ export default class extends Controller {
     .then(data => {
       console.log('Member created:', data);
       if (data.status == "success") {
-        this.emailListTarget.insertAdjacentHTML("beforeend", `<li>${data.user.email}</li>`);
+        this.emailListTarget.insertAdjacentHTML("beforeend", `<li>${data.user.first_name} ${data.user.last_name}</li>`);
       };
     })
     .catch(error => {
