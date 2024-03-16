@@ -1,4 +1,5 @@
-<div class="preselected-bar-content">
+<div class="gradient-body">
+  <div class="preselected-bar-content">
   <h6 class="summary">
     Matches for <%= @group.title %> on <%= @group.date_of_outing.strftime("%a, %e %b") %>
   </h6>
@@ -31,7 +32,7 @@
               </div>
             </div>
             <!-- Thumbnail image -->
-            <div class="thumbnail-container-rectangle">
+            <div class="thumbnail-container-rectangle" data-controller="image-swiper">
               <%= image_tag preselected_bar.bar.image_url, alt: "Thumbnail image of #{preselected_bar.bar.name}" %>
             </div>
             <!-- Bar description -->
@@ -65,4 +66,5 @@
       </div>
     </div>
   <% end %>
+  </div>
 </div>
