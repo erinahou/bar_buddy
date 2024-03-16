@@ -1,0 +1,18 @@
+<div id="verdict_<%= group.id %>">
+  <% if group.winning_bar.present? %>
+    <%= link_to verdict_group_path(group), class: "group-card" do %>
+      <p class="card-title">
+        <%= group.winning_bar.name %>
+      </p>
+      <div>
+        <i class="fa-solid fa-trophy"></i>
+        <i class="fa-solid fa-chevron-right"></i>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="group-card">
+      <p>Pending results</p>
+      <i class="fa-regular fa-clock"></i>
+    </div>
+  <% end %>
+</div>

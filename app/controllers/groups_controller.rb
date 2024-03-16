@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+
   def new
     unless user_signed_in?
       flash.alert = 'You must be signed in to create an article'
@@ -32,6 +33,15 @@ class GroupsController < ApplicationController
       status = @group.votes_complete_for?(member.user) ? :complete : :pending
       @member_votes_status[member] = status
     end
+
+    all_votes_complete = @member_votes_status.values.all?(:complete)
+
+  if all_votes_complete
+    # Call the verdict action
+    verdict
+    render :confirmation
+  end
+
   end
 
   def verdict

@@ -12,5 +12,11 @@ class Vote < ApplicationRecord
       target: "vote_status_#{user.id}",
       partial: "groups/vote_status",
       locals: { user: user, status: status }
+
+      Turbo::StreamsChannel.broadcast_replace_to "group_show",
+      target: "vote_status_#{user.id}",
+      partial: "groups/vote_status",
+      locals: { user: user, status: status }
+
   end
 end

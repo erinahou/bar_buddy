@@ -9,43 +9,19 @@
 <!--Verdict -->
 <div>
   <h5>Verdict</h5>
-  <% if @group.winning_bar.present? %>
-    <%= link_to verdict_group_path(@group), class:"group-card" do %>
-      <p class="card-title">
-        <%= @group.winning_bar.name %>
-      </p>
-      <div>
-        <i class="fa-solid fa-trophy"></i>
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-    <% end %>
-  <% else %>
-    <div class="group-card">
-      <p>Pending results</p>
-      <i class="fa-regular fa-clock"></i>
-    </div>
-  <% end %>
+  <%= turbo_stream_from "verdict" %>
+  <%= render 'groups/verdict', group: @group %>
 </div>
 
 <!-- Members -->
 <div>
   <h5>Members</h5>
   <div class="user-vote-status-container">
+    <%= turbo_stream_from "group_show" %>
     <% @group.members.each do |member| %>
-      <!--<li><%= member.user.first_name %> <%= member.user.last_name %></li>-->
-      <!-- New code -->
       <% user = member.user %>
-      <div id="vote_status_<%= user.id %>" class="user-vote-status"> <!-- Changed from p to div (EH) -->
-        <div class="avatar-with-badge">
-          <!-- Initial avatar -->
-          <div class="avatar-initials">
-            <span><%= user.first_name[0].upcase %></span>
-            <span><%= user.last_name[0].upcase %></span>
-          </div>
-          <!-- Status badge -->
-        </div>
-        <%= user.first_name %> <%= user.last_name %>
-      </div>
+      <% status = @group.votes_complete_for?(user) ? :complete : :pending %>
+      <%= render "groups/vote_status", user: user, status: status %>
     <% end %>
   </div>
 </div>

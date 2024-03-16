@@ -5,20 +5,9 @@
   <div class="group-container">
     <h5>Active groups</h5>
     <div class="group-list">
+      <%= turbo_stream_from "active_groups" %>
       <% @active_groups.each do |group| %>
-          <%= link_to group_path(group), class:"group-card" do %>
-            <p class="card-title">
-              <%= group.title %>
-            </p>
-            <div>
-              <% if group.winning_bar.present? %>
-                <i class="fa-solid fa-check"></i>
-              <% else %>
-                <i class="fa-regular fa-clock"></i>
-              <% end %>
-              <i class="fa-solid fa-chevron-right"></i>
-            </div>
-          <% end %>
+        <%= render 'groups/group_card', group: group %>
       <% end %>
     </div>
   </div>
@@ -27,21 +16,10 @@
   <div class="group-container">
     <h5>Past groups</h5>
     <div class="group-list">
+      <%= turbo_stream_from "past_groups" %>
       <% if @past_groups.any? %>
         <% @past_groups.each do |group| %>
-          <%= link_to group_path(group), class:"group-card" do %>
-            <p class="card-title">
-              <%= group.title %>
-            </p>
-            <div>
-              <% if group.winning_bar.present? %>
-                <i class="fa-solid fa-check"></i>
-              <% else %>
-                <i class="fa-regular fa-clock"></i>
-              <% end %>
-              <i class="fa-solid fa-chevron-right"></i>
-            </div>
-          <% end %>
+          <%= render 'groups/group_card', group: group %>
         <% end %>
       <% else %>
         <p>No past groups available.</p>
