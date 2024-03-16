@@ -296,6 +296,7 @@ DEPENDENCIES
   geocoder
   importmap-rails
   jbuilder
+  letter_opener
   mailgun-ruby (~> 1.2.6)
   mapkick-rb
   pg (~> 1.1)

@@ -5,6 +5,10 @@ class UserMailer < ApplicationMailer
     @group = group
     @date_of_outing = @group.date_of_outing.try(:strftime, "%A, %d %B %Y") || @group.date_of_outing
     @time_of_outing = @group.time_of_outing.try(:strftime, "%I:%M %p") || @group.time_of_outing
+
+    # Generating the URL for the preselected bars page
+    @preselected_bars_url = group_preselected_bars_url(@group)
+
     mail(to: @user.email, subject: "#{@inviting_user.first_name} has invited you to the #{@group.title} group on Bar Buddy")
   end
 
@@ -16,4 +20,3 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "The Nominated Bar Is...")
   end
 end
-
