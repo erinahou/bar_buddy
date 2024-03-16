@@ -1,0 +1,13 @@
+<%= link_to group_path(group), class: "group-card", id: "group_#{group.id}" do %>
+  <p class="card-title">
+    <%= group.title %>
+  </p>
+  <div>
+    <% if group.winning_bar.present? %>
+      <i class="fa-solid fa-check"></i>
+    <% else %>
+      <i class="fa-regular fa-clock"></i>
+    <% end %>
+    <i class="fa-solid fa-chevron-right"></i>
+  </div>
+<% end %>

@@ -1,8 +1,20 @@
-<p id="vote_status_<%= user.id %>">
-  <%= user.first_name %> <%= user.last_name %> -
-  <% if status == :complete %>
-    <i class="fas fa-check" style="color: green;"></i>
-  <% else %>
-    <i class="fas fa-times" style="color: red;"></i>
-  <% end %>
-</p>
+<div id="vote_status_<%= user.id %>" class="user-vote-status"> <!-- Changed from p to div (EH) -->
+        <div class="avatar-with-badge">
+          <!-- Initial avatar -->
+          <div class="avatar-initials">
+            <span><%= user.first_name[0].upcase %></span>
+            <span><%= user.last_name[0].upcase %></span>
+          </div>
+          <!-- Status badge -->
+          <% if status == :complete %>
+            <div class="avatar-badge badge-accept">
+              <i class="fa-solid fa-check"></i>
+            </div>
+          <% else %>
+            <div class="avatar-badge badge-pending">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+          <% end %>
+        </div>
+        <%= user.first_name %> <%= user.last_name %>
+      </div>

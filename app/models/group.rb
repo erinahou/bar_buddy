@@ -1,4 +1,5 @@
 class Group < ApplicationRecord
+  after_update_commit :broadcast_winning_bar_update, if: :saved_change_to_winning_bar_id?
   belongs_to :creater, class_name: 'User', foreign_key: 'creater_id'
   belongs_to :winning_bar, class_name: "Bar", foreign_key: "winning_bar_id", optional: true
   has_many :members, dependent: :destroy
@@ -15,4 +16,20 @@ class Group < ApplicationRecord
     member_votes_count == total_preselected_bars
   end
 
+  def broadcast_winning_bar_update
+    Turbo::StreamsChannel.broadcast_replace_to "active_groups",
+      target: "group_#{id}",
+      partial: "groups/group_card",
+      locals: { group: self }
+
+    Turbo::StreamsChannel.broadcast_replace_to "past_groups",
+      target: "group_#{id}",
+      partial: "groups/group_card",
+      locals: { group: self }
+
+    Turbo::StreamsChannel.broadcast_replace_to "verdict",
+      target: "verdict_#{id}",
+      partial: "groups/verdict",
+      locals: { group: self }
+  end
 end
