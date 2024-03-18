@@ -7,8 +7,8 @@
   <!-- Form -->
   <%= form_tag({action: :create}, method: :post, class: "simple_form") do %>
     <div>
-      <%= label_tag :area, "Which area?", class: "label" %>
-      <%= text_field_tag :area, nil, class: "form-control", required: true %>
+      <%= label_tag :area, "Which area?", class: "label"%>
+      <%= text_field_tag :area, nil, class: "form-control", required: true, id:"area" %>
     </div>
 
     <h6>... and what kind of place?</h6>
