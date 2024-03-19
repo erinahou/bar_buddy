@@ -11,7 +11,13 @@ class PreselectedBarsController < ApplicationController
 
   def create
     selected_characteristic_styles = params[:preselected_bar][:characteristic_ids]
-    selected_bars = Bar.joins(:bar_characteristics).joins(:characteristics).where(characteristics: { style: selected_characteristic_styles })
+    selected_bars = Bar.joins(:bar_characteristics)
+                    .joins(:characteristics)
+                    .where(characteristics: { style: selected_characteristic_styles })
+                    .select('bars.*, RANDOM()')
+                    .distinct
+                    .order('RANDOM()')
+                    .limit(20)
 
     selected_bars.each do |bar|
       unless PreselectedBar.exists?(bar_id: bar.id, group_id: @group.id)
