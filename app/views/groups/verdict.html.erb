@@ -1,3 +1,13 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const jsConfetti = new JSConfetti()
+
+    // This will trigger the confetti as soon as the page is loaded
+    jsConfetti.addConfetti()
+  })
+</script>
+
+
 <div class="main-content verdict">
   <% winning_bar = @group.winning_bar %>
   <% if @group.winning_bar %>
