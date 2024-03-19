@@ -1,3 +1,12 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const jsConfetti = new JSConfetti()
+
+    // This will trigger the confetti as soon as the page is loaded
+    jsConfetti.addConfetti()
+  })
+</script>
+
 <div class="gradient-body-victory">
   <div class="verdict">
   <% winning_bar = @group.winning_bar %>
