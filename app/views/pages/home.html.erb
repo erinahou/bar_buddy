@@ -7,6 +7,9 @@
     <h1>Bar Buddy</h1>
     <h4>for indecisive humans</h4>
     <%= link_to "Get started", new_group_path, class: "btn btn-secondary" %>
+    <% if user_signed_in? %>
+      <%= link_to "Go to Dashboard", dashboard_path, class: "btn btn-secondary" %>
+    <% end %>
     <!--<%= image_tag "https://res.cloudinary.com/dmvbynqto/image/upload/v1710554494/bb-stack-homepage_2_uh9qjo.svg", alt: "Bar buddy vote cards", class: "stack"%>-->
 
     <dotlottie-player
