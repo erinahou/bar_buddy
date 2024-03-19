@@ -1,9 +1,23 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  config.action_mailer.default_url_options = { host: "https://bar-buddy-1400-887b45e509ca.herokuapp.com" }
   # Settings specified here will take precedence over those in config/application.rb.
+  ####################
+  config.action_mailer.delivery_method = :smtp
 
+  # Check if the SMTP_SETTINGS environment variable is set
+  if ENV['SMTP_SETTINGS']
+    # Parse the SMTP_SETTINGS environment variable from JSON string to a Ruby hash and symbolize keys
+    smtp_settings = JSON.parse(ENV['SMTP_SETTINGS']).symbolize_keys
+
+    # Assign the parsed settings to action_mailer.smtp_settings
+    config.action_mailer.smtp_settings = smtp_settings
+  else
+    # Optional: Raise an error or warning if the SMTP_SETTINGS variable is not set
+    raise 'SMTP settings environment variable is not set!'
+  end
+  ####################
   # Code is not reloaded between requests.
   config.cache_classes = true
 

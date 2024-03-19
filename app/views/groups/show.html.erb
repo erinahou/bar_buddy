@@ -1,30 +1,32 @@
-<div class="main-content group-show">
-<div>
-  <h3><%= @group.title %></h3>
-  <p>
-    <%= @group.date_of_outing.strftime("%a, %e %b") %> at
-    <%= @group.time_of_outing.strftime("%l : %M %p")%>
-  </p>
-</div>
-<!--Verdict -->
-<div>
-  <h5>Verdict</h5>
-  <%= turbo_stream_from "verdict" %>
-  <%= render 'groups/verdict', group: @group %>
-</div>
+<div class="gradient-body">
+  <div class="main-content group-show">
+    <div>
+      <h3><%= @group.title %></h3>
+      <p>
+        <%= @group.date_of_outing.strftime("%a, %e %b") %> at
+        <%= @group.time_of_outing.strftime("%l:%M%p")%>
+      </p>
+    </div>
+    <!--Verdict -->
+    <div>
+      <h5>Verdict</h5>
+      <%= turbo_stream_from "verdict" %>
+      <%= render 'groups/verdict', group: @group %>
+    </div>
 
-<!-- Members -->
-<div>
-  <h5>Members</h5>
-  <div class="user-vote-status-container">
-    <%= turbo_stream_from "group_show" %>
-    <% @group.members.each do |member| %>
-      <% user = member.user %>
-      <% status = @group.votes_complete_for?(user) ? :complete : :pending %>
-      <%= render "groups/vote_status", user: user, status: status %>
-    <% end %>
+    <!-- Members -->
+    <div>
+      <h5>Members</h5>
+      <div class="user-vote-status-container">
+        <%= turbo_stream_from "group_show" %>
+        <% @group.members.each do |member| %>
+          <% user = member.user %>
+          <% status = @group.votes_complete_for?(user) ? :complete : :pending %>
+          <%= render "groups/vote_status", user: user, status: status %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= link_to "Back to Dashboard", dashboard_path, class: "btn btn-secondary" %>
   </div>
-</div>
-
-  <%= link_to "Back to Dashboard", dashboard_path, class: "btn btn-primary" %>
 </div>

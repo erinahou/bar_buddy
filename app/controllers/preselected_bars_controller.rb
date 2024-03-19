@@ -25,7 +25,7 @@ class PreselectedBarsController < ApplicationController
       end
     end
 
-    redirect_to group_preselected_bars_path(@group), notice: 'Preselected bars added successfully!'
+    redirect_to group_preselected_bars_path(@group)
   end
 
   private

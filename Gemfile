@@ -29,6 +29,8 @@ gem "jbuilder"
 
 gem 'mailgun-ruby', '~>1.2.6'
 
+gem 'mailtrap'
+
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 

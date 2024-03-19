@@ -147,6 +147,7 @@ GEM
       net-smtp
     mailgun-ruby (1.2.14)
       rest-client (>= 2.0.2)
+    mailtrap (1.2.2)
     mapkick-rb (0.1.5)
     marcel (1.0.2)
     matrix (0.4.2)
@@ -293,6 +294,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mailgun-ruby (~> 1.2.6)
+  mailtrap
   mapkick-rb
   pg (~> 1.1)
   puma (~> 5.0)
