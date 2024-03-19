@@ -21,16 +21,24 @@
 body {
   background-color: $bb-background;
   font-family: $my-font;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 .main-content {
-  margin: 40px 16px;
+  padding: 40px 24px;
 }
 
 .gradient-body {
-  background: linear-gradient(-45deg, #91F2FF, #AEFF47, #55e0ff, #23d5ab);
-	background-size: 400% 400%;
+  background: linear-gradient(-45deg, #91F2FF, #AEFF47, #55e0ff, #3e18e8);
+  // background: linear-gradient(-45deg, #2811ab, #AEFF47, #91F2FF);
+  background-size: 200% 200%;
+	animation: gradient 3s ease infinite;
+}
+
+.gradient-body-victory {
+  background: linear-gradient(-45deg, #fb692b, #ff47da, #ffc918, #e83b18);
+  // background: linear-gradient(-45deg, #2811ab, #AEFF47, #91F2FF);
+  background-size: 200% 200%;
 	animation: gradient 3s ease infinite;
   height: 100vh;
 }
@@ -80,7 +88,7 @@ h6 {
 }
 
 p {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 22px;
   margin: 0;
@@ -97,12 +105,29 @@ li {
 }
 
 .hyperlink {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   color: $bb-txt-black-primary;
   text-decoration: underline;
 }
 
+.p-label {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: $bb-txt-black-secondary;
+  font-weight: 600;
+  padding-bottom: 8px;
+}
+
+.user-vote-status-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
 
 // BB's background color classes
 .bb-bkg-accept {
@@ -111,6 +136,10 @@ li {
 
 .bb-bkg-reject {
   background-color: $bb-reject;
+}
+
+.bb-bkg-black {
+  background-color: $bb-black;
 }
 
 // quick cs for buttons - will move to partial -rm

@@ -1,7 +1,19 @@
 .dashboard {
   display: flex;
   flex-direction: column;
+  padding: 40px 24px;
   gap: 24px;
+
+  .greeting {
+    display: flex;
+    align-items: center;
+  }
+
+  .hi-emoji {
+    font-size: 56px;
+    line-height: 56px;
+    padding-right: 16px;
+  }
 }
 
 .group-container {
@@ -9,7 +21,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding-top: 8px;
+  }
+
+  h5 {
+    margin: 0;
   }
 }
 

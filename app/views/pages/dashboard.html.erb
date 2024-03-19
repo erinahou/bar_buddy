@@ -1,5 +1,9 @@
-<div class="main-content dashboard">
-  <h3>Hi, <%= current_user.first_name %>!</h3>
+<div class="gradient-body">
+  <div class="dashboard">
+  <div class="greeting">
+    <p class="hi-emoji">👋</p>
+    <h3>Hi, <%= current_user.first_name %>!</h3>
+  </div>
 
   <!-- Active groups -->
   <div class="group-container">
@@ -25,5 +29,6 @@
         <p>No past groups available.</p>
       <% end %>
     </div>
+  </div>
   </div>
 </div>
