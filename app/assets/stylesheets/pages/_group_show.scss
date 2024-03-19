@@ -3,12 +3,13 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 32px;
+  height: 100vh;
 
   h5 {
     margin-bottom: 16px;
   }
 
   .user-vote-status-container {
-    padding: 0;
+    padding: 0 16px 16px 16px !important;
   }
 }

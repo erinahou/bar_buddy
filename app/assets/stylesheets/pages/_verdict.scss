@@ -2,6 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 40px 24px;
+
+  .btn {
+    width: 100%;
+  }
+}
+
+
+.rating {
+  justify-content: center;
 }
 
 .winner-card {
@@ -16,12 +26,20 @@
   font-weight: bold;
   text-align: center;
   padding:  48px 16px 24px 16px;
-  margin-top: 40px;
+  margin: 40px 0 32px 0;
   background-color: white;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 
-  .rating {
-    justify-content: center;
+  .thumbnail-container-rectangle {
+    border-radius: 8px;
+  }
+
+  .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

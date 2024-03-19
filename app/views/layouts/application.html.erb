@@ -15,12 +15,15 @@
     />
     <!-- Flatpickr to enhance datepicker in our form -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Lottie (script) -->
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <!-- Other -->
     <%= stylesheet_link_tag 'https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css' %>
     <%= javascript_include_tag 'https://code.jquery.com/jquery-3.6.0.min.js' %>
     <%= javascript_include_tag 'https://code.jquery.com/ui/1.13.0/jquery-ui.min.js' %>
   </head>
 
-  <body data-controller="background-color" data-current-route="<%= request.path %>">
+  <body>
     <%= render "shared/flashes" %>
 
     <%= yield %>
@@ -28,6 +31,6 @@
 
   <!-- Swiper from CDN (script)-->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
- <!-- MAPBOX (script)-->
- <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+  <!-- MAPBOX (script)-->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
 </html>

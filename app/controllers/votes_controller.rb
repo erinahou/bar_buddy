@@ -17,6 +17,6 @@ class VotesController < ApplicationController
       end
     end
 
-    redirect_to confirmation_group_path(@group), notice: "Votes recorded successfully."
+    redirect_to confirmation_group_path(@group)
   end
 end

@@ -8,8 +8,9 @@
   .swiper-slide {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 8px;
+    justify-content: flex-start;
+    // height: 75vh;
+    gap: 12px;
     border-radius: 18px;
     font-size: 22px;
     font-weight: bold;
@@ -22,15 +23,16 @@
     color: $bb-txt-black-secondary;
   }
 
-  .description {
-    display: flex;
-    flex-direction: column;
-  }
-
   .voting-buttons {
     display: flex;
+    flex-grow: 2;
     justify-content: center;
+    align-items: flex-end;
     gap: 16px;
+  }
+
+  h4 {
+    text-align: center;
   }
 }
 
@@ -40,15 +42,35 @@
   text-overflow: ellipsis; // Keep address in one line
   white-space: nowrap; // Prevent line breaks
   color: $bb-txt-black-secondary;
+  text-align: center;
 }
 
 
 .rating {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 8px;
 
   i {
     color: $bb-txt-black-tertiary;
   }
+}
+
+.description {
+  // display: flex;
+  // flex-direction: column;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.carousel-inner {
+  border-radius: 8px;
+}
+
+.bar-info-block {
+  padding: 8px 0 24px 0;
 }

@@ -3,17 +3,17 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 32px;
+  height: 100vh;
 
   .intro {
     text-align: center;
   }
-}
 
-.user-vote-status-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 0 16px;
+  .hi-five-emoji {
+    font-size: 72px;
+    line-height: 72px;
+    margin-bottom: 8px;
+  }
 }
 
 .user-vote-status {

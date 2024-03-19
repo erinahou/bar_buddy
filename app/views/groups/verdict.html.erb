@@ -1,4 +1,5 @@
-<div class="main-content verdict">
+<div class="gradient-body-victory">
+  <div class="verdict">
   <% winning_bar = @group.winning_bar %>
   <% if @group.winning_bar %>
     <h3>Winner</h3>
@@ -34,8 +35,12 @@
       <!-- Bar description -->
       <div class="description">
         <p><%= winning_bar.description %></p>
-        <%= link_to "More info", bar_path(winning_bar), class: "hyperlink text-center"%>
+        <!--<%= link_to "More info", bar_path(winning_bar), class: "hyperlink text-center"%>-->
       </div>
     </div>
+
+    <!-- Back to dashboard button -->
+    <%= link_to "Back to Group", group_path(@group), class: "btn btn-secondary" %>
   <% end %>
+  </div>
 </div>

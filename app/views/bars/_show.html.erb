@@ -1,5 +1,5 @@
 <div>
-  <h3><%=bar.name%></h3>
+  <h4><%=bar.name%></h4>
   <p class="address"><%=bar.display_address%></p>
   <!-- Rating -->
   <div class="rating">
@@ -15,12 +15,49 @@
     </div>
     <p class="rating-in-int"><%= bar.rating %></p>
   </div>
-  <!-- Thumbnail image -->
+  <!-- Thumbnail image (with carousel) -->
+  <div id="carouselExampleIndicators<%= bar.id %>-m" class="carousel slide" data-bs-ride="false">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="thumbnail-container-rectangle carousel-item active">
+        <%= image_tag bar.image_url, alt: "Thumbnail image of #{bar.name}" %>
+      </div>
+      <div class="thumbnail-container-rectangle carousel-item">
+        <%= image_tag bar.image_url, alt: "Thumbnail image of #{bar.name}" %>
+      </div>
+      <div class="thumbnail-container-rectangle carousel-item">
+        <%= image_tag bar.image_url, alt: "Thumbnail image of #{bar.name}" %>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators<%= bar.id %>-m" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators<%= bar.id %>-m" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Thumbnail image
   <div class="thumbnail-container-rectangle">
     <%= image_tag bar.image_url, alt: "Thumbnail image of #{bar.name}" %>
   </div>
+  -->
   <!-- Bar description -->
-  <p><%=bar.description%></p>
+  <div class="bar-info-block">
+    <p class="p-label">About this place</p>
+    <p><%=bar.description%></p>
+  </div>
+
+  <!-- Location map -->
+  <p class="p-label">Location</p>
+  <%= js_map [{latitude: bar.latitude, longitude: bar.longitude}] %>
 </div>
 
-<%= js_map [{latitude: bar.latitude, longitude: bar.longitude}] %>
+<!--<h6>Location</h6>
+<%= js_map [{latitude: bar.latitude, longitude: bar.longitude}] %>-->
