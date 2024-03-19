@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @user_has_voted = @group.votes_complete_for?(current_user)
   end
 
   def create

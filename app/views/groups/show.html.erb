@@ -28,5 +28,10 @@
     </div>
 
     <%= link_to "Back to Dashboard", dashboard_path, class: "btn btn-secondary" %>
+
+    <% unless @user_has_voted %>
+      <%= link_to 'Vote on Preselected Bars', group_preselected_bars_path(@group), class: 'btn btn-secondary' %>
+    <% end %>
+
   </div>
 </div>
