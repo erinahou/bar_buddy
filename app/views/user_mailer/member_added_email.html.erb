@@ -4,8 +4,10 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 </head>
 <body>
-  <h1><%= @inviting_user.first_name %> has invited you to the <%= @group.title %> group on Bar Buddy</h1>
-  <p>Please follow the link to have your say on what bar your group goes to on <%= @date_of_outing %> at <%= @time_of_outing %> </p>
-  <p><a href="<%= @preselected_bars_url %>">Preselected Bars Page</a></p>
+  <p>Hi <%= @user.first_name %>, </p>
+  <p><%= @inviting_user.first_name %> has invited you to the <%= @group.title %> group on Bar Buddy</p>
+  <p>Please follow the link to have your say on what bar your group goes to on <%= @date_of_outing %> at <%= @time_of_outing %>. Please click <a href="<%= @preselected_bars_url %>">here</a> to vote on the bars you want to go to.</p>
+  <p>We hope you have a great time,</p>
+  <p>The Bar Buddy Team</p>
 </body>
 </html>

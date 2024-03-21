@@ -12,11 +12,14 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "#{@inviting_user.first_name} has invited you to the #{@group.title} group on Bar Buddy")
   end
 
-  def verdict_email(user, winning_bar, date_of_outing, time_of_outing)
+  def verdict_email(user, winning_bar, date_of_outing, time_of_outing, group_id)
     @user = user
     @winning_bar = winning_bar
     @date_of_outing = date_of_outing.strftime("%A, %d %B %Y")
     @time_of_outing = time_of_outing.strftime("%I:%M %p")
-    mail(to: @user.email, subject: "The Nominated Bar Is...")
+
+    @verdict_page_url = verdict_group_url(group_id)
+
+    mail(to: @user.email, subject: "Winning Bar Announcement")
   end
 end

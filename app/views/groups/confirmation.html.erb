@@ -37,16 +37,11 @@
         <%= user.first_name %> <%= user.last_name %>
       </div>
     <% end %>
+    <%= turbo_stream_from "confirmation" %>
+    <%= render "groups/voting_button" %>
   </div>
-
-  <% if @member_votes_status.values.all? { |status| status == "Votes Complete" } %>
-    <%= link_to "See The Winning Bar", verdict_group_path(@group), class: "btn btn-primary" %>
-  <% else %>
-    <%= link_to "Go to Dashboard", dashboard_path, class: "btn btn-secondary" %>
-  <% end %>
-  </div>
+ </div>
 </div>
-
 <!-- Original code
 
  <% @member_votes_status.each do |member, status| %>

@@ -5,9 +5,9 @@
     <title>Winning Bar Announcement</title>
 </head>
 <body>
-    <p><%= @winning_bar.name %> !!! </p>
-    <p>Hi <%= @user.first_name %> <%= @user.last_name %>, you will be attending <%= @winning_bar.name %> on <%= @date_of_outing %> at <%= @time_of_outing %>.</p>
-    <p>Happy barring!</p>
+    <p>Hi <%= @user.first_name %>, </p>
+    <p>Please click <a href="<%= @verdict_page_url %>">here</a> to see the winning bar. </p>
+    <p>We hope you have a great time,</p>
     <p>The Bar Buddy Team</p>
 </body>
 </html>
