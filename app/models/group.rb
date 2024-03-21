@@ -31,10 +31,5 @@ class Group < ApplicationRecord
       target: "verdict_#{id}",
       partial: "groups/verdict",
       locals: { group: self }
-
-    Turbo::StreamsChannel.broadcast_replace_to "confirmation",
-      target: "confirmation_#{id}",
-      partial: "groups/voting_button",
-      locals: { group: self }
   end
 end
