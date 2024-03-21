@@ -19,4 +19,12 @@ class Vote < ApplicationRecord
       locals: { user: user, status: status }
 
   end
+
+  def broadcast_button_update(group)
+    all_votes_complete = group.members.all? { |member| group.votes_complete_for?(member.user) }
+    Turbo::StreamsChannel.broadcast_replace_to "votes",
+      target: "vote_action_buttons",
+      partial: "groups/voting_button",
+      locals: { all_votes_complete: all_votes_complete, group: group }
+  end
 end
