@@ -4,9 +4,10 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  overflow: hidden;
 
-  .btn {
-    margin-top: 16px;
+  .btn-secondary {
+    margin: 16px 0 8px 0;
   }
 
   .stack {
@@ -17,9 +18,10 @@
 
 .bb-logo {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  padding: 24px 28px 24px 28px;
+  padding: 20px 20px 40px 28px;
 
   p {
     font-size: 32px;
