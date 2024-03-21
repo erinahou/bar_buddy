@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 32px;
-  height: 100vh;
 
   .intro {
     text-align: center;
@@ -13,6 +12,14 @@
     font-size: 72px;
     line-height: 72px;
     margin-bottom: 8px;
+  }
+
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .user-vote-status-container {
+    padding: 16px 16px 0 16px;
   }
 }
 

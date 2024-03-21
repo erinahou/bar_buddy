@@ -4,14 +4,17 @@
   font-weight: 600;
 }
 
+/* Consider removing this btn-primary */
 .btn-primary {
-  color: $bb-txt-black-primary;
+  background-color: $bb-black;
+  color: $bb-txt-white-primary;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid $bb-black;
 }
 
 .btn-primary:hover {
-  background-color: #86E113;
-  border: 1px solid #86E113;
+  background-color: #232323;
+  color: $bb-txt-white-primary;
 }
 
 .btn-secondary {
@@ -23,6 +26,10 @@
 
 .btn-secondary:hover {
   background-color: #232323;
+}
+
+.btn-secondary:active {
+  background-color: #232323 !important;
 }
 
 .btn-outline {
