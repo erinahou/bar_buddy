@@ -70,7 +70,7 @@ class GroupsController < ApplicationController
         if @winning_bar.present?
           @group.update(winning_bar_id: @winning_bar.id)
           @group.members.each do |member|
-            UserMailer.verdict_email(member.user, @winning_bar, @group.date_of_outing, @group.time_of_outing, @group.id).deliver_now
+            VerdictEmailWorkerJob.perform_async(member.user.id, @winning_bar.id, @group.id)
           end
           # flash[:notice] = 'Verdict and emails sent successfully!'
         else
