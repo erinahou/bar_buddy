@@ -6,7 +6,11 @@
         <%= @group.date_of_outing.strftime("%a, %e %b") %> at
         <%= @group.time_of_outing.strftime("%l:%M%p")%>
       </p>
+      <% unless @user_has_voted %>
+        <%= link_to "Vote now", group_preselected_bars_path(@group), class: 'btn btn-outline vote-btn' %>
+      <% end %>
     </div>
+
     <!--Verdict -->
     <div>
       <h5>Verdict</h5>
@@ -27,11 +31,8 @@
       </div>
     </div>
 
+    <!-- Back button -->
     <%= link_to "Back to Dashboard", dashboard_path, class: "btn btn-secondary" %>
-
-    <% unless @user_has_voted %>
-      <%= link_to 'Vote on Preselected Bars', group_preselected_bars_path(@group), class: 'btn btn-secondary' %>
-    <% end %>
 
   </div>
 </div>

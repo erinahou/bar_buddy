@@ -1,15 +1,15 @@
 <div class="gradient-body">
   <div class="homepage-content">
-    <div class="bb-logo">
+    <div class="header bb-logo">
       <%# <p>BB</p> %>
       <%= image_tag"https://res.cloudinary.com/dmvbynqto/image/upload/v1710755326/bb_logo_lipyr9.svg", alt: "Logo of Bar Buddy" %>
+      <% if user_signed_in? %>
+        <%= link_to "Dashboard", dashboard_path, class: "btn btn-outline" %>
+      <% end %>
     </div>
     <h1>Bar Buddy</h1>
     <h4>for indecisive humans</h4>
     <%= link_to "Get started", new_group_path, class: "btn btn-secondary" %>
-    <% if user_signed_in? %>
-      <%= link_to "Go to Dashboard", dashboard_path, class: "btn btn-secondary" %>
-    <% end %>
     <!--<%= image_tag "https://res.cloudinary.com/dmvbynqto/image/upload/v1710554494/bb-stack-homepage_2_uh9qjo.svg", alt: "Bar buddy vote cards", class: "stack"%>-->
 
     <dotlottie-player
