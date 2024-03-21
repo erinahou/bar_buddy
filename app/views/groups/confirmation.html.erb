@@ -1,5 +1,4 @@
-<div class="gradient-body">
-  <div class="main-content confirmation"> <!-- wrapped content in main-content for css -->
+<div class="main-content confirmation"> <!-- wrapped content in main-content for css -->
   <%= turbo_stream_from "votes" %>
   <div class="intro">
     <p class="hi-five-emoji">🙌</p>
@@ -38,9 +37,8 @@
       </div>
     <% end %>
     <%= turbo_stream_from "confirmation" %>
-    <%= render "groups/voting_button" %>
   </div>
- </div>
+  <%= render "groups/voting_button" %>
 </div>
 <!-- Original code
 
