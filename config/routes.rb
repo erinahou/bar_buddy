@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
@@ -22,4 +24,5 @@ Rails.application.routes.draw do
     resources :preselected_bars, only: [:index, :new, :create]
   end
   # removed resources :users because this is already done through devise.
+    mount Sidekiq::Web => '/sidekiq'
 end
