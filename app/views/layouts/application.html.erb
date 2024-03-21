@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="view-transition" content="same-origin" />
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
     <!-- Swiper from CDN -->
     <link
       rel="stylesheet"
@@ -19,6 +16,9 @@
     <%= stylesheet_link_tag 'https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css' %>
     <%= javascript_include_tag 'https://code.jquery.com/jquery-3.6.0.min.js' %>
     <%= javascript_include_tag 'https://code.jquery.com/ui/1.13.0/jquery-ui.min.js' %>
+    <meta name="view-transition" content="same-origin" />
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
     <!-- Lottie (script) -->
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
   </head>
