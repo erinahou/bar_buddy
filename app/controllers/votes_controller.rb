@@ -17,14 +17,6 @@ class VotesController < ApplicationController
         return
       end
     end
-
-    if all_members_voted?(@group)
-      Turbo::StreamsChannel.broadcast_replace_to "votes",
-        target: "voting_button",
-        partial: "groups/voting_button",
-        locals: { group: @group }
-    end
-
     redirect_to confirmation_group_path(@group)
   end
 
