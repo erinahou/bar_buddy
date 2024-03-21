@@ -41,15 +41,11 @@
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
-                  <div class="thumbnail-container-rectangle carousel-item active">
-                    <%= image_tag preselected_bar.bar.image_url, alt: "Thumbnail image of #{preselected_bar.bar.name}" %>
-                  </div>
-                  <div class="thumbnail-container-rectangle carousel-item">
-                    <%= image_tag preselected_bar.bar.image_url, alt: "Thumbnail image of #{preselected_bar.bar.name}" %>
-                  </div>
-                  <div class="thumbnail-container-rectangle carousel-item">
-                    <%= image_tag preselected_bar.bar.image_url, alt: "Thumbnail image of #{preselected_bar.bar.name}" %>
-                  </div>
+                  <% preselected_bar.bar.bar_images.each_with_index do |bar_image, index| %>
+                    <div class="thumbnail-container-rectangle carousel-item <%= 'active' if index == 0 %>">
+                      <%= image_tag bar_image.image_url, alt: "Thumbnail image of #{preselected_bar.bar.name}" %>
+                    </div>
+                  <% end %>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators<%= index %>" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_12_095600) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_20_004717) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_12_095600) do
     t.datetime "updated_at", null: false
     t.index ["bar_id"], name: "index_bar_characteristics_on_bar_id"
     t.index ["characteristic_id"], name: "index_bar_characteristics_on_characteristic_id"
+  end
+
+  create_table "bar_images", force: :cascade do |t|
+    t.bigint "bar_id", null: false
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bar_id"], name: "index_bar_images_on_bar_id"
   end
 
   create_table "bars", force: :cascade do |t|
@@ -97,6 +105,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_12_095600) do
 
   add_foreign_key "bar_characteristics", "bars"
   add_foreign_key "bar_characteristics", "characteristics"
+  add_foreign_key "bar_images", "bars"
   add_foreign_key "groups", "users", column: "creater_id"
   add_foreign_key "members", "groups"
   add_foreign_key "members", "users"
