@@ -17,7 +17,7 @@ class MembersController < ApplicationController
         render json: { status: "exists", message: 'Member already exists in the group.', user: user }, status: :unprocessable_entity
       else
         new_member = Member.create(user_id: user.id, group_id: group_id)
-        UserMailer.member_added_email(current_user, user, @group).deliver_now if new_member.persisted?
+        MemberEmailJob.perform_async(current_user.id, user.id, @group.id) if new_member.persisted?
         render json: { status: "success", message: 'Member added successfully!', user: user }, status: :created
       end
     else
