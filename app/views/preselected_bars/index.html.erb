@@ -12,7 +12,7 @@
         <div class="swiper-wrapper">
           <!-- Slides -->
           <% @preselected_bars.each_with_index do |preselected_bar, index| %>
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-preselected-bar-id="<%= preselected_bar.id %>">
               <!-- Bar name, address, rating -->
               <div>
                 <h4><%= preselected_bar.bar.name %></h4>
@@ -67,10 +67,10 @@
               <%= link_to "More info", "#", data: { bs_toggle: "modal", bs_target: "#barModal_#{preselected_bar.bar.id}" }, class: "hyperlink text-center" %>
               <!-- Voting buttons (changed radio buttons into buttons to match UI and easier interaction) -->
               <div class="voting-buttons">
-                <button class="bb-btn-circle bb-bkg-reject" type="button" data-action="click->swiper#swipeNext" data-value="false">
+                <button class="bb-btn-circle bb-bkg-reject" type="button" data-action="click->swiper#swipeNext" data-swiper-vote-value="false">
                   <i class="fa-solid fa-xmark black-icon"></i>
                 </button>
-                <button class="bb-btn-circle bb-bkg-accept" type="button" data-action="click->swiper#swipeNext" data-value="true">
+                <button class="bb-btn-circle bb-bkg-accept" type="button" data-action="click->swiper#swipeNext" data-swiper-vote-value="true">
                   <i class="fa-solid fa-check black-icon"></i>
                 </button>
               </div>

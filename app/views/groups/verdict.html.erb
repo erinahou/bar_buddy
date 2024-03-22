@@ -1,9 +1,12 @@
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const jsConfetti = new JSConfetti()
+  document.addEventListener('turbo:render', () => {
+    // Check if the current page is the verdict page
+    if (window.location.pathname === '<%= verdict_group_path(@group) %>') {
+      const jsConfetti = new JSConfetti()
 
-    // This will trigger the confetti as soon as the page is loaded
-    jsConfetti.addConfetti()
+      // This will trigger the confetti only on the verdict page
+      jsConfetti.addConfetti()
+    }
   })
 </script>
 
