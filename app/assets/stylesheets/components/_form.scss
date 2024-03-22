@@ -4,11 +4,12 @@ input {
 }
 
 .onboarding {
+  height: 100vh;
 
   form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    // gap: 16px;
   }
 
   label, ul {

@@ -36,7 +36,7 @@ body {
 }
 
 .gradient-body-victory {
-  background: linear-gradient(-45deg, #fb692b, #ff47da, #ffc918, #e83b18);
+  background: linear-gradient(-45deg, #f68758, #f889ef, #f2fa90, #f97e65);
   // background: linear-gradient(-45deg, #2811ab, #AEFF47, #91F2FF);
   background-size: 200% 200%;
 	animation: gradient 3s ease infinite;
@@ -101,6 +101,10 @@ ul {
 
 
 li {
+  color: $bb-txt-black-primary;
+}
+
+a {
   color: $bb-txt-black-primary;
 }
 
@@ -200,8 +204,8 @@ li {
 }
 
 .container div label input[type="checkbox"]:checked ~ span {
-  background-color: $bb-primary-opacity;
-  border: 1px solid $bb-primary;
+  background-color: $bb-primary;
+  border: 1px solid rgba(0, 0, 0, 0.5);
   color: #fff;
   // box-shadow: 0 2px 20px grey;
 }
