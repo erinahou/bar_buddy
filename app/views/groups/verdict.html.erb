@@ -42,7 +42,9 @@
       </div>
       <!-- Thumbnail image -->
       <div class="thumbnail-container-rectangle">
-        <%= image_tag winning_bar.image_url, alt: "Thumbnail image of #{winning_bar.name}" %>
+        <!--<%= image_tag winning_bar.image_url, alt: "Thumbnail image of #{winning_bar.name}" %>-->
+        <%= image_tag winning_bar.bar_images.first.image_url, alt: "Thumbnail image of #{winning_bar.name}" %>
+        preselected_bar.bar.bar_images
       </div>
       <!-- Bar description -->
       <div class="description">
