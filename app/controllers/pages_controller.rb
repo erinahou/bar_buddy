@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @active_groups = Group.where("date_of_outing >= ?", Date.today)
-    @past_groups = Group.where("date_of_outing < ?", Date.today)
+    @active_groups = current_user.groups.where("date_of_outing >= ?", Date.today)
+    @past_groups = current_user.groups.where("date_of_outing < ?", Date.today)
   end
 end
