@@ -11,7 +11,7 @@
       <%= text_field_tag :area, nil, class: "form-control", required: true, id:"area", data: { turbo_frame: false }  %>
     </div>
 
-    <h6>... and what kind of place?</h6>
+    <h6 class="type-of-place">... and what kind of place?</h6>
     <div class="outer-container">
       <div class="container">
         <% @characteristics.each do |characteristic| %>
@@ -22,7 +22,7 @@
             </label>
           </div>
         <% end %>
-        <div>
+        <div class="next-btn">
           <%= submit_tag 'Next', class: 'btn btn-secondary' %>
         </div>
       </div>

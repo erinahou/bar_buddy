@@ -1,6 +1,10 @@
 .onboarding {
-  .btn-primary {
+  .btn-secondary {
     width: 100%;
+  }
+
+  .type-of-place {
+    margin-top: 24px;
   }
 }
 
@@ -12,9 +16,13 @@
   }
 
   ul li {
-    font-size: 16px;
+    font-size: 18px;
     list-style: none;
     margin: 0; /* Reset margin */
     padding: 0; /* Reset padding */
   }
+}
+
+.next-btn {
+  width: 100%;
 }

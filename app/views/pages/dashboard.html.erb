@@ -6,18 +6,19 @@
 
   <!-- Active groups -->
   <div class="group-container">
-    <h5>Active groups</h5>
+    <h4>Active groups</h4>
     <div class="group-list">
       <%= turbo_stream_from "active_groups" %>
       <% @active_groups.each do |group| %>
         <%= render 'groups/group_card', group: group %>
       <% end %>
     </div>
+    <%= link_to "+ Create a new group", new_group_path, class: "btn btn-outline" %>
   </div>
 
   <!-- Past groups -->
   <div class="group-container">
-    <h5>Past groups</h5>
+    <h4>Past groups</h4>
     <div class="group-list">
       <%= turbo_stream_from "past_groups" %>
       <% if @past_groups.any? %>
@@ -29,4 +30,9 @@
       <% end %>
     </div>
   </div>
+
+  <!-- Log out button -->
+  <div class="other-actions">
+    <%= link_to "Log out", destroy_user_session_path, class: "btn btn-secondary" %>
   </div>
+</div>
