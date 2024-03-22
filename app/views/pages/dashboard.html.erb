@@ -6,7 +6,7 @@
 
   <!-- Active groups -->
   <div class="group-container">
-    <h4>Active groups</h4>
+    <h5>Active groups</h5>
     <div class="group-list">
       <%= turbo_stream_from "active_groups" %>
       <% @active_groups.each do |group| %>
@@ -18,7 +18,7 @@
 
   <!-- Past groups -->
   <div class="group-container">
-    <h4>Past groups</h4>
+    <h5>Past groups</h5>
     <div class="group-list">
       <%= turbo_stream_from "past_groups" %>
       <% if @past_groups.any? %>
